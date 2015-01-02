@@ -7,19 +7,61 @@
     <meta name="description" content="Advertising Manager System">
 
     <title>Ads Manager</title>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="public/css/main.css"/>
 </head>
-<body ng-app="ads-app">
+<body ng-app="adsApp">
 
 <!-- Preloader -->
 <div id="preloader">
     <span id="status" class="glyphicon glyphicon-refresh glyphicon-spin"></span>
 </div>
 
+<aside>
+    <header>
+        <h1>Navigation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/user/ads/ads">My Ads</a></li>
+            <li><a href="#/user/ads/create">Publish New Ad</a></li>
+            <li><a href="#/user/edit">Edit Profile</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<aside>
+    <header>
+        <h1>Categories</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/">All</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<aside>
+    <header>
+        <h1>Towns</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/">All</a></li>
+        </ul>
+    </nav>
+</aside>
+
 <main class="container" ng-view></main>
 
 
-<script data-main="js/main" src="vendor/requirejs/require.js"></script>
+<script data-main="public/js/main" src="public/vendor/requirejs/require.js"></script>
+
+<script src="public/vendor/angular/angular.js"></script>
+<script src="public/vendor/angular-resource/angular-resource.min.js"></script>
+<script src="public/vendor/angular-route/angular-route.min.js"></script>
+
+<script src="../app/app.js"></script>
 
 </body>
 </html>

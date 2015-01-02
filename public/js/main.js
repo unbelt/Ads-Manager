@@ -1,5 +1,10 @@
+'use strict';
+
 require.config({
     paths: {
+        'angular': '../vendor/angular/angular',
+        'angular-route': '../vendor/angular-route/angular-route',
+        'angular-resource': '../vendor/angular-resource/angular-resource',
         'jquery': '../vendor/jquery/dist/jquery',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap'
     },
@@ -10,7 +15,6 @@ require.config({
 
 require(['bootstrap'], function () {
     $(function () {
-        'use strict';
 
         // Page show-up
         $('#status').fadeOut();
