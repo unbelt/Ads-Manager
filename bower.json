@@ -1,0 +1,15 @@
+{
+  "name": "Ads-Manager",
+  "version": "1.0.0",
+  "main": "public/css/main.css",
+  "ignore": [
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular-latest": "latest",
+    "requirejs": "latest",
+    "jquery": "latest",
+    "bootstrap": "latest"
+  },
+  "devDependencies": {}
+}
