@@ -18,14 +18,26 @@
 
 <aside>
     <header>
+        <p>To publish new ad, please login.</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/login">Login</a></li>
+            <li><a href="#/register">Register</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<aside>
+    <header>
         <h1>Navigation</h1>
     </header>
     <nav>
         <ul>
             <li><a href="#/home">Home</a></li>
-            <li><a href="#/user/ads/ads">My Ads</a></li>
-            <li><a href="#/user/ads/create">Publish New Ad</a></li>
-            <li><a href="#/user/edit">Edit Profile</a></li>
+            <li><a href="#/my-ads">My Ads</a></li>
+            <li><a href="#/create-ad">Publish New Ad</a></li>
+            <li><a href="#/edit-profile">Edit Profile</a></li>
         </ul>
     </nav>
 </aside>
@@ -53,6 +65,10 @@
 </aside>
 
 <main class="container" ng-view></main>
+
+<footer>
+    <p>&copy; 2015 <a href="http://unbelt.wordpress.com/">unbelt</a>, No Rights Reserved</p>
+</footer>
 
 
 <script data-main="public/js/main" src="public/vendor/requirejs/require.js"></script>
