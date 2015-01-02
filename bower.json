@@ -6,7 +6,9 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "angular-latest": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-resource": "latest",
     "requirejs": "latest",
     "jquery": "latest",
     "bootstrap": "latest"
