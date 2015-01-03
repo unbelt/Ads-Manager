@@ -12,75 +12,87 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
+footer, header, menu, nav, section, summary,
 time, mark, audio, video {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
+
 body {
-    line-height:1;
+    line-height: 1;
 }
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section {
-    display:block;
+
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
 }
+
 nav ul {
-    list-style:none;
+    list-style: none;
 }
+
 blockquote, q {
-    quotes:none;
+    quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content:'';
-    content:none;
+    content: '';
+    content: none;
 }
+
 a {
-    margin:0;
-    padding:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
+
 ins {
-    background-color:#ff9;
-    color:#000;
-    text-decoration:none;
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
 }
+
 mark {
-    background-color:#ff9;
-    color:#000;
-    font-style:italic;
-    font-weight:bold;
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
 }
+
 del {
     text-decoration: line-through;
 }
+
 abbr[title], dfn[title] {
-    border-bottom:1px dotted;
-    cursor:help;
-}
-table {
-    border-collapse:collapse;
-    border-spacing:0;
-}
-hr {
-    display:block;
-    height:1px;
-    border:0;
-    border-top:1px solid #cccccc;
-    margin:1em 0;
-    padding:0;
-}
-input, select {
-    vertical-align:middle;
+    border-bottom: 1px dotted;
+    cursor: help;
 }
 
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
 
 /* Angular Styles */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -105,6 +117,7 @@ input, select {
         transform: rotate(360deg);
     }
 }
+
 @keyframes spin {
     100% {
         transform: rotate(360deg);
@@ -134,18 +147,23 @@ body {
 h1 {
     font-size: 1.6em;
 }
+
 h2 {
     font-size: 1.3em;
 }
+
 h3 {
     font-size: 1em;
 }
+
 h4 {
     font-size: 0.7em;
 }
+
 h5 {
     font-size: 0.6em;
 }
+
 h6 {
     font-size: 0.5em;
 }
@@ -154,11 +172,21 @@ a {
     text-decoration: none;
 }
 
+input, select {
+    width: 95%;
+    margin: 10px 0;
+    padding: 8px;
+    display: block;
+}
+
 .selected {
     background-color: #daa600;
     border: 1px solid #7f6000;
 }
+
 .button {
+    display: block;
+    font-size: 1em;
     text-align: center;
     margin-top: 15px;
     background-color: #70ad47;
@@ -169,13 +197,14 @@ a {
 .pull-left {
     float: left;
 }
+
 .pull-right {
     float: right;
 }
 
 /* Main Page Styles */
 
-#header, #footer, .menu-box, .ad-box {
+#header, #footer, .box {
     background-color: #a9d18e;
 }
 
@@ -199,44 +228,49 @@ a {
 }
 
 /* Menu Boxes */
-.menu-box, .ad-box {
+.box {
     margin: 20px;
     padding: 30px;
     border: 1px solid #507e32;
     box-shadow: 3px 3px 5px #abb6a4;
 }
 
-.menu-box > header h2 {
+.box > header h2 {
     height: 40px;
     margin-bottom: 15px;
     text-align: center;
     border-bottom: 1px solid #507e32;
 }
 
-.menu-box > nav > ul li a {
+.menu > nav > ul li a {
     display: block;
     padding: 10px;
     font-size: 1.2em;
     color: #000000;
 }
 
-.menu-box > nav > ul li a:hover {
+.menu > nav > ul li a:hover {
     border: 1px solid #7f6000;
 }
 
 /* Advertising Box */
-.ad-box {
+.ad {
     display: inline-block;
 }
 
-.ad-box header {
+.ad header {
     margin-bottom: 20px;
 }
-.ad-box header time {
+
+.ad header h2 {
+    text-align: left;
+}
+
+.ad header time {
     float: right;
 }
 
-.ad-box span {
+.ad span {
     width: 74%;
     text-align: left;
     padding: 10px;
@@ -256,18 +290,29 @@ a {
     float: right;
 }
 
+/* Login Box */
+.form {
+    border-radius: 10px;
+}
 
+.form input[type=submit] {
+    display: inline-block;
+    width: 20%;
+    color: #ffffff;
+}
 
+.form a {
+    float: right;
+    margin-top: 20px;
+}
 
+/* Register Box */
 
-
-
-
-
-
-
-
-
+.register div {
+    width: 45%;
+    margin-right: 15px;
+    display: inline-block;
+}
 
 
 
