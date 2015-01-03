@@ -223,7 +223,7 @@ input, select {
 }
 
 .container {
-    width: 50%;
+    max-width: 66%;
     display: inline-block;
 }
 
@@ -271,7 +271,7 @@ input, select {
 }
 
 .ad span {
-    width: 74%;
+    width: 80%;
     text-align: left;
     padding: 10px;
     margin: 5px;
@@ -285,7 +285,7 @@ input, select {
 }
 
 .ad-desc {
-    width: 72%;
+    width: 85%;
     text-align: right;
     float: right;
 }
@@ -293,6 +293,7 @@ input, select {
 /* Login Box */
 .form {
     border-radius: 10px;
+    min-width: 500px;
 }
 
 .form input[type=submit] {
@@ -307,12 +308,26 @@ input, select {
 }
 
 /* Register Box */
-
 .register div {
     width: 45%;
     margin-right: 15px;
     display: inline-block;
 }
 
+/* Publish Ad Box */
 
 
+
+/* My Ads Box */
+.ad div {
+    float: left;
+    width: 77%;
+}
+.status {
+    text-align: center;
+    padding-left: 20px;
+    width: 200px;
+    height: 270px;
+    float: right;
+    border-left: 1px solid #507e32;
+}

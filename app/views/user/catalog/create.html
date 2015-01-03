@@ -1,1 +1,38 @@
-<h1>Ads - Publish New Ad</h1>
+<section class="box form">
+    <header>
+        <h2>Publish New Ad</h2>
+    </header>
+    <form action="" class="publish">
+        <div class="image">
+            <img src="http://placehold.it/130x160" alt=""/>
+        </div>
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="Title" required="required"/>
+        </div>
+        <div>
+            <label for="text">Text:</label>
+            <textarea name="" id="text" rows="8" placeholder="Description of your ad"></textarea>
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" id="image" placeholder="Image"/>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select name="" id="category">
+                <option value="select">Select</option>
+            </select>
+        </div>
+        <div>
+            <label for="town">Town:</label>
+            <select name="" id="town">
+                <option value="select">Select</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" class="button pull-left" value="Publish"/>
+            <a href="#/home" class="button pull-right">Cancel</a>
+        </div>
+    </form>
+</section>
