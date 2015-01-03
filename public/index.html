@@ -9,67 +9,81 @@
     <title>Ads Manager</title>
     <link rel="stylesheet" href="public/css/main.css"/>
 </head>
-<body ng-app="adsApp">
+<body ng-app="adsApp" ng-controller="PageController">
 
 <!-- Preloader -->
 <div id="preloader">
-    <span id="status" class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+    <span class="spinner"></span>
 </div>
 
-<aside>
-    <header>
-        <p>To publish new ad, please login.</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#/login">Login</a></li>
-            <li><a href="#/register">Register</a></li>
-        </ul>
-    </nav>
-</aside>
+<header id="header">
+    <h1>{{ adsApp.name }} - {{ pageTitle }}</h1>
+</header>
 
-<aside>
-    <header>
-        <h1>Navigation</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#/home">Home</a></li>
-            <li><a href="#/my-ads">My Ads</a></li>
-            <li><a href="#/create-ad">Publish New Ad</a></li>
-            <li><a href="#/edit-profile">Edit Profile</a></li>
-        </ul>
-    </nav>
-</aside>
+<section class="pull-left">
+    <aside class="menu-box">
+        <header>
+            <p>To publish new ad, please login.</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#/login" class="button">Login</a></li>
+                <li><a href="#/register" class="button">Register</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-<aside>
-    <header>
-        <h1>Categories</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#/">All</a></li>
-        </ul>
-    </nav>
-</aside>
+    <aside class="menu-box">
+        <header>
+            <h2>Navigation</h2>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/my-ads">My Ads</a></li>
+                <li><a href="#/create-ad">Publish New Ad</a></li>
+                <li><a href="#/edit-profile">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </aside>
+</section>
 
-<aside>
-    <header>
-        <h1>Towns</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#/">All</a></li>
-        </ul>
-    </nav>
-</aside>
+<section class="container" ng-view></section>
 
-<main class="container" ng-view></main>
+<section class="pull-right">
+    <aside class="menu-box">
+        <header>
+            <h2>Categories</h2>
+        </header>
+        <nav ng-controller="HomeController">
+            <ul>
+                <li><a href="#/">All</a></li>
+                <li ng-repeat="category in categories"><a href="">{{ category.name }}</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-<footer>
-    <p>&copy; 2015 <a href="http://unbelt.wordpress.com/">unbelt</a>, No Rights Reserved</p>
+    <aside class="menu-box">
+        <header>
+            <h2>Towns</h2>
+        </header>
+        <nav ng-controller="HomeController">
+            <ul>
+                <li><a href="#/">All</a></li>
+                <li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>
+            </ul>
+        </nav>
+    </aside>
+</section>
+
+<footer id="footer">
+    <p>&copy; 2015 <a href="{{ author.url }}">{{ author.name }}</a>, No Rights Reserved</p>
+    <small>
+        <strong><a href="{{ author.repository }}">{{ adsApp.fullName }}</a> powered by:</strong>
+        <a href="http://angularjs.org/">AngularJS</a> and
+        <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+    </small>
 </footer>
-
 
 <script data-main="public/js/main" src="public/vendor/requirejs/require.js"></script>
 
@@ -78,6 +92,8 @@
 <script src="public/vendor/angular-route/angular-route.min.js"></script>
 
 <script src="../app/app.js"></script>
-
+<script src="../app/controllers/PageController.js"></script>
+<script src="../app/controllers/HomeController.js"></script>
+<script src="../app/services/adsDataService.js"></script>
 </body>
 </html>

@@ -3,13 +3,15 @@
 require.config({
     paths: {
         'angular': '../vendor/angular/angular',
-        'angular-route': '../vendor/angular-route/angular-route',
-        'angular-resource': '../vendor/angular-resource/angular-resource',
+        'ngRoute': '../vendor/angular-route/angular-route',
+        'ngResource': '../vendor/angular-resource/angular-resource',
         'jquery': '../vendor/jquery/dist/jquery',
         'bootstrap': '../vendor/bootstrap/dist/js/bootstrap'
     },
     shim: {
-        'bootstrap': ['jquery']
+        'bootstrap': ['jquery'],
+        'ngRoute': ['angular'],
+        'ngResource': ['angular']
     }
 });
 
