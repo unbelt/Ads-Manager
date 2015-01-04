@@ -1,11 +1,11 @@
 'use strict';
 
 adsApp.controller('RegisterController',
-    function RegisterController($scope, $rootScope, registerService) {
+    function RegisterController($scope, $rootScope, authService) {
         $rootScope.pageTitle = 'Register';
 
         $scope.register = function () {
-            registerService.register();
+            authService.register();
         }
     }
 );

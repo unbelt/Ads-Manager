@@ -33,16 +33,6 @@ nav ul {
     list-style: none;
 }
 
-blockquote, q {
-    quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-
 a {
     margin: 0;
     padding: 0;
@@ -141,34 +131,13 @@ body {
     background-color: #e2f0d9;
 }
 
-h1 {
-    font-size: 1.6em;
-}
-
-h2 {
-    font-size: 1.3em;
-    margin-bottom: 20px;
-}
-
-h3 {
-    font-size: 1em;
-}
-
-h4 {
-    font-size: 0.7em;
-}
-
-h5 {
-    font-size: 0.6em;
-}
-
-h6 {
-    font-size: 0.5em;
-}
-
-a {
-    text-decoration: none;
-}
+h1 { font-size: 1.6em;}
+h2 {font-size: 1.3em;}
+h3 {font-size: 1em;}
+h4 {font-size: 0.7em;}
+h5 {font-size: 0.6em;}
+h6 {font-size: 0.5em;}
+a {text-decoration: none;}
 
 img {
     width: 100%;
@@ -183,19 +152,6 @@ input, select {
 }
 
 /* Common Assets */
-.selected {
-    background-color: #daa600;
-    border: 1px solid #7f6000;
-}
-.button {
-    display: block;
-    font-size: 1em;
-    text-align: center;
-    margin-top: 15px;
-    background-color: #70ad47;
-    border: 1px solid #67934b;
-    border-radius: 7px;
-}
 .pull-left {
     float: left;
 }
@@ -209,23 +165,39 @@ input, select {
     display: none;
 }
 
+.selected {
+    background-color: #daa600;
+    border: 1px solid #7f6000;
+}
+.button {
+    display: block;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #70ad47;
+    border: 1px solid #67934b;
+    border-radius: 7px;
+}
+
 /* Main Page Styles */
 #header, #footer, .box {
     background-color: #a9d18e;
+    box-shadow: 3px 3px 5px #abb6a4;
 }
 
-#header {
+#header, .box header h2 {
     padding: 15px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #507e32;
     text-align: center;
 }
 
 #footer {
-    clear: both;
-    margin-top: 20px;
     padding: 10px;
+    margin-top: 20px;
     border-top: 1px solid #507e32;
     text-align: center;
+    clear: both;
 }
 
 .container {
@@ -242,13 +214,6 @@ aside.menu {
     margin: 20px;
     padding: 30px;
     border: 1px solid #507e32;
-    box-shadow: 3px 3px 5px #abb6a4;
-}
-
-.box > header h2 {
-    height: 40px;
-    text-align: center;
-    border-bottom: 1px solid #507e32;
 }
 
 .box > nav > ul li a {
@@ -270,6 +235,11 @@ aside.menu {
 
 .ad header time {
     float: right;
+    font-style: italic;
+}
+
+.ad header h2 {
+    text-align: left;
 }
 
 .ad p {
@@ -317,11 +287,14 @@ aside.menu {
     margin-top: 20px;
 }
 
-/* Register Box */
-.register div {
+/* Login / Register Box */
+ .register div {
     width: 45%;
     margin-right: 15px;
     display: inline-block;
+}
+.login {
+    width: 200%;
 }
 
 /* Publish Ad Box */

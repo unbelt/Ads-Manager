@@ -55,24 +55,32 @@
         <header>
             <h2>Categories</h2>
         </header>
-        <nav>
-            <ul>
-                <li><a href="#/">All</a></li>
-                <li ng-repeat="category in categories"><a href="#/">{{ category.name }}</a></li>
-            </ul>
-        </nav>
+        <!--<nav>-->
+            <!--<ul>-->
+                <!--<li><a href="#/">All</a></li>-->
+                <!--<li ng-repeat="category in categories">{{ category.name }}</li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+
+        <select ng-init="select = 'All'" ng-model="category" ng-options="c.name for c in categories">
+            <option value="">{{select}}</option>
+        </select>
     </section>
 
     <section class="box">
         <header>
             <h2>Towns</h2>
         </header>
-        <nav>
-            <ul>
-                <li><a href="#/">All</a></li>
-                <li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>
-            </ul>
-        </nav>
+        <!--<nav>-->
+            <!--<ul>-->
+                <!--<li><a href="#/">All</a></li>-->
+                <!--<li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+
+        <select ng-model="town" ng-model="town" ng-options="t.name for t in towns">
+            <option value="">{{select}}</option>
+        </select>
     </section>
 </aside>
 
@@ -95,7 +103,7 @@
 <script src="../app/controllers/RegisterController.js"></script>
 <script src="../app/controllers/user/catalog/CatalogController.js"></script>
 
-<script src="../app/services/catalogDataService.js"></script>
+<script src="../app/services/catalogService.js"></script>
 <script src="../app/services/loginService.js"></script>
 <script src="../app/services/registerService.js"></script>
 </body>
