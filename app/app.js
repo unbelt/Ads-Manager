@@ -17,7 +17,7 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
             })
             .when('/my-ads', {
                 templateUrl: 'app/views/user/catalog/show.html',
-                controller: 'AdsController'
+                controller: 'CatalogController'
             })
             .when('/create-ad', {
                 templateUrl: 'app/views/user/catalog/create.html',

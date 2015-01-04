@@ -1,29 +1,19 @@
-<section class="box ad">
-    <header>
-        <time datetime="2008-02-14 20:00">3-Jan-2015</time>
-        <h2>iPhone 4S for Sale</h2>
-    </header>
-    <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
+<section ng-repeat="ad in catalog">
+    <article class="box ad">
+        <header>
+            <time datetime="2008-02-14 20:00">3-Jan-2015</time>
+            <h2>{{ ad.title }}</h2>
+        </header>
+        <img src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
 
-    <section class="ad-desc">
-        <span>I have iPhone 4S 16GB for sale. Good price. Like a new. Please call me in the evenings or at weekends.</span>
-        <p>Name: <span>Victor</span></p>
-        <p>Email: <span>igra4a@abv.bg</span></p>
-        <p>Tel. <span>+359 888 77 55 44</span></p>
-    </section>
-</section>
+        <section class="ad-desc">
+            <span>{{ ad.text }}</span>
 
-<section class="box ad">
-    <header>
-        <time datetime="2008-02-14 20:00">3-Jan-2015</time>
-        <h2>iPhone 4S for Sale</h2>
-    </header>
-    <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
+            <p>Name: <span>{{ ad.ownerName }}</span></p>
 
-    <section class="ad-desc">
-        <span>I have iPhone 4S 16GB for sale. Good price. Like a new. Please call me in the evenings or at weekends.</span>
-        <p>Name: <span>Victor</span></p>
-        <p>Email: <span>igra4a@abv.bg</span></p>
-        <p>Tel. <span>+359 888 77 55 44</span></p>
-    </section>
+            <p>Email: <span>{{ ad.ownerEmail }}</span></p>
+
+            <p>Tel. <span>{{ ad.ownerPhone }}</span></p>
+        </section>
+    </article>
 </section>

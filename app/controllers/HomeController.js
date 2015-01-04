@@ -4,7 +4,10 @@ adsApp.controller('HomeController',
     function HomeController($scope, $rootScope, catalogDataService) {
         $rootScope.pageTitle = 'Home';
 
-        $scope.categories = catalogDataService.getAll('categories');
-        $scope.towns = catalogDataService.getAll('towns');
+        catalogDataService.getAll('ads').get(function (data) {
+            $scope.catalog = data.ads;
+        });
+        $scope.categories = catalogDataService.getAll('categories').query();
+        $scope.towns = catalogDataService.getAll('towns').query();
     }
 );
