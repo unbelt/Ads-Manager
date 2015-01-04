@@ -1,1 +1,43 @@
-<h1>Ads - Edit User Profile</h1>
+<section class="box profile form">
+    <header>
+        <h2>Edit Profile</h2>
+    </header>
+
+    <form action="">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Name" value="" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email" value="" required="required" />
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Phone" value="" />
+
+        <label for="town">Town:</label>
+        <select name="" id="town">
+            <option value="select">Select</option>
+        </select>
+
+        <input type="submit" class="button" value="Update"/>
+        <a href="#/home" class="button">Cancel</a>
+    </form>
+</section>
+
+<section class="box profile form">
+    <header>
+        <h2>Change Password</h2>
+    </header>
+    <form action="">
+        <label for="password-old">Old password:</label>
+        <input type="password" id="password-old" placeholder="Password" />
+
+        <label for="password">New password:</label>
+        <input type="password" id="password" placeholder="Password" />
+
+        <label for="password-rep">Confirm new password:</label>
+        <input type="password" id="password-rep" placeholder="Password" />
+
+        <input type="submit" class="button" value="Change"/>
+        <a href="#/home" class="button">Cancel</a>
+    </form>
+</section>

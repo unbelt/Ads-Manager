@@ -1,6 +1,3 @@
-/*@import url("../vendor/bootstrap/dist/css/bootstrap.min.css");*/
-/*@import url("../vendor/bootstrap/dist/css/bootstrap-theme.min.css");*/
-
 /* Reset CSS Styles */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -202,6 +199,14 @@ input, select {
     float: right;
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 /* Main Page Styles */
 
 #header, #footer, .box {
@@ -316,13 +321,12 @@ input, select {
 
 /* Publish Ad Box */
 
-
-
 /* My Ads Box */
 .ad div {
     float: left;
     width: 77%;
 }
+
 .status {
     text-align: center;
     padding-left: 20px;
@@ -330,4 +334,9 @@ input, select {
     height: 270px;
     float: right;
     border-left: 1px solid #507e32;
+}
+
+/* Profile Box */
+.profile {
+    display: inline-block;
 }

@@ -1,33 +1,28 @@
 'use strict';
 
-require.config({
-    paths: {
-        'angular': '../vendor/angular/angular',
-        'ngRoute': '../vendor/angular-route/angular-route',
-        'ngResource': '../vendor/angular-resource/angular-resource',
-        'jquery': '../vendor/jquery/dist/jquery',
-        'bootstrap': '../vendor/bootstrap/dist/js/bootstrap'
-    },
-    shim: {
-        'bootstrap': ['jquery'],
-        'ngRoute': ['angular'],
-        'ngResource': ['angular']
-    }
-});
+(function () {
+    // Page preloader
+    setTimeout(function () {
+        var preloader = document.getElementById('preloader');
+        preloader.style.opacity = 1;
 
-require(['bootstrap'], function () {
-    $(function () {
-
-        // Page show-up
-        $('#status').fadeOut();
-        $('#preloader').delay(150).fadeOut('slow');
-        $('body').delay(150).css({'overflow': 'visible'});
-
-        // target _blank to all external links
-        $('body a').each(function () {
-            if (this.href.indexOf(location.hostname) === -1) {
-                $(this).attr('target', '_blank');
+        var refreshIntervalId = setInterval(function () {
+            preloader.style.opacity -= 0.03;
+            if (preloader.style.opacity < 0) {
+                clearInterval(refreshIntervalId);
+                preloader.removeAttribute('style');
+                preloader.className = 'hide';
             }
-        });
-    }());
-});
+        }, 10);
+
+    }, 150);
+
+    // target _blank to all external links
+    var links = document.getElementsByTagName('a');
+
+    [].forEach.call(links, function (link) {
+        if (link.getAttribute('href').indexOf('#') === -1) {
+            link.setAttribute('target', '_blank');
+        }
+    });
+}());
