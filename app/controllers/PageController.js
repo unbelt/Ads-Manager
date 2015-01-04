@@ -1,14 +1,24 @@
 'use strict';
 
-adsApp.controller('PageController',
-    function PageController($scope, config, catalogService) {
+app.controller('PageController',
+    function PageController($scope, config, catalog, identity, auth) {
 
-        var categories = catalogService.getAll('categories').query();
-        var towns = catalogService.getAll('towns').query();
+        var categories = catalog.getAll('categories').query();
+        var towns = catalog.getAll('towns').query();
 
-        catalogService.getAll('ads').get(function (data) {
+        catalog.getAll('ads').get(function (data) {
             $scope.catalog = data.ads;
         });
+
+        $scope.currentUser = identity.getCurrentUser();
+        $scope.isAuthenticated = identity.isAuthenticated();
+
+        $scope.logout = function() {
+            auth.logout().then(function() {
+                console.log('Successful logout!'); // TODO: Build notification system
+                $location.path('/');
+            })
+        };
 
         $scope.app = config.app;
         $scope.author = config.author;

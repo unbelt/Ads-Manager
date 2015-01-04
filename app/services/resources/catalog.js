@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.factory('catalogService', function catalogService($resource, config) {
+app.factory('catalog', function catalog($resource, config) {
     return {
         get: function (resource, id) {
             return $resource(config.app.api + resource + id);

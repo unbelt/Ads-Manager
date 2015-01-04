@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="adsApp" ng-controller="PageController">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Advertising Manager System">
 
-    <title>Ads Manager</title>
+    <title>{{ app.title }} | {{ pageTitle }}</title>
     <link rel="stylesheet" href="../public/css/main.css"/>
 </head>
-<body ng-app="adsApp" ng-controller="PageController">
+<body>
 
 <!-- Preloader -->
 <div id="preloader">
@@ -17,11 +17,15 @@
 </div>
 
 <header id="header">
+    <aside ng-show="isAuthenticated">
+        <p class="pull-right">{{ currentUser.username }} <a href="#" ng-click="logout()">Logout</a></p>
+    </aside>
+
     <h1>{{ app.name }} - {{ pageTitle }}</h1>
 </header>
 
 <aside class="menu pull-left">
-    <section class="box">
+    <section class="box" ng-hide="isAuthenticated">
         <header>
             <p>To publish new ad, please login.</p>
         </header>
@@ -56,12 +60,13 @@
             <h2>Categories</h2>
         </header>
         <!--<nav>-->
-            <!--<ul>-->
-                <!--<li><a href="#/">All</a></li>-->
-                <!--<li ng-repeat="category in categories">{{ category.name }}</li>-->
-            <!--</ul>-->
+        <!--<ul>-->
+        <!--<li><a href="#/">All</a></li>-->
+        <!--<li ng-repeat="category in categories">{{ category.name }}</li>-->
+        <!--</ul>-->
         <!--</nav>-->
 
+        <!-- TODO: Extract as partial-->
         <select ng-init="select = 'All'" ng-model="category" ng-options="c.name for c in categories">
             <option value="">{{select}}</option>
         </select>
@@ -72,12 +77,13 @@
             <h2>Towns</h2>
         </header>
         <!--<nav>-->
-            <!--<ul>-->
-                <!--<li><a href="#/">All</a></li>-->
-                <!--<li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>-->
-            <!--</ul>-->
+        <!--<ul>-->
+        <!--<li><a href="#/">All</a></li>-->
+        <!--<li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>-->
+        <!--</ul>-->
         <!--</nav>-->
 
+        <!-- TODO: Extract as partial-->
         <select ng-model="town" ng-model="town" ng-options="t.name for t in towns">
             <option value="">{{select}}</option>
         </select>
@@ -87,14 +93,15 @@
 <footer id="footer">
     <p>&copy; 2015 <a href="{{ author.website }}">{{ author.name }}</a>, No Rights Reserved</p>
     <small>
-        <strong>Open source project:</strong> <a href="{{ author.gitHub }}">{{ app.fullName }}</a>
+        <strong>Open source project:</strong> <a href="{{ author.gitHub }}">{{ app.title }}</a>
     </small>
 </footer>
 
 <script src="../public/js/main.js"></script>
 <script src="../public/vendor/angular/angular.js"></script>
-<script src="../public/vendor/angular-resource/angular-resource.min.js"></script>
-<script src="../public/vendor/angular-route/angular-route.min.js"></script>
+<script src="../public/vendor/angular-resource/angular-resource.js"></script>
+<script src="../public/vendor/angular-route/angular-route.js"></script>
+<script src="../public/vendor/angular-cookies/angular-cookies.js"></script>
 
 <script src="../app/app.js"></script>
 <script src="../app/controllers/PageController.js"></script>
@@ -103,8 +110,9 @@
 <script src="../app/controllers/RegisterController.js"></script>
 <script src="../app/controllers/user/catalog/CatalogController.js"></script>
 
-<script src="../app/services/catalogService.js"></script>
-<script src="../app/services/loginService.js"></script>
-<script src="../app/services/registerService.js"></script>
+<script src="../app/services/resources/catalog.js"></script>
+<script src="../app/services/account/auth.js"></script>
+<script src="../app/services/account/authorization.js"></script>
+<script src="../app/services/account/identity.js"></script>
 </body>
 </html>

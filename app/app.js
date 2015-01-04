@@ -1,10 +1,10 @@
 'use strict';
 
-var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
+var app = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
     .constant('config', {
         app: {
             name: 'Ads',
-            fullName: 'Ads Manager',
+            title: 'Ads Manager',
             api: 'http://localhost:1337/api/'
         },
         author: {

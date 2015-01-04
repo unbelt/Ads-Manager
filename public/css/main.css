@@ -126,7 +126,8 @@ input, select {
     -webkit-animation: spin 600ms infinite linear;
 }
 
-body {
+html, body {
+    height: 100%;
     font-size: 20px;
     background-color: #e2f0d9;
 }
@@ -201,6 +202,7 @@ input, select {
 }
 
 .container {
+    min-height: 100%;
     max-width: 60%;
     display: inline-block;
 }

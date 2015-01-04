@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('HomeController',
+app.controller('HomeController',
     function HomeController($scope, $rootScope) {
         $rootScope.pageTitle = 'Home';
     }

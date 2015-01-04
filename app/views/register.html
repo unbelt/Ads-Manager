@@ -3,37 +3,37 @@
         <h2>User Registration</h2>
     </header>
 
-    <form action="">
+    <form name="loginForm">
         <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Username" required="required"/>
+        <input type="text" id="username" placeholder="Username" required="required" ng-model="user.username"/>
 
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Password" required="required"/>
+            <input type="password" id="password" placeholder="Password" required="required" ng-model="user.password"/>
         </div>
         <div>
             <label for="password-rep">Confirm password:</label>
-            <input type="password" id="password-rep" placeholder="Confirm password" required="required"/>
+            <input type="password" id="password-rep" placeholder="Confirm password" required="required" ng-model="user.confirmPassword"/>
         </div>
         <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Name"/>
+            <input type="text" id="name" placeholder="Name" required="required" ng-model="user.name"/>
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="user@example.com" required="required"/>
+            <input type="email" id="email" placeholder="user@example.com" required="required" ng-model="user.email"/>
         </div>
         <div>
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" placeholder="Phone"/>
+            <input type="text" id="phone" placeholder="Phone" ng-model="user.phone"/>
         </div>
         <div>
             <label for="town">Town:</label>
-            <select name="" id="town">
-                <option value="select">Select</option>
+            <select id="town" ng-model="user.townId">
+                <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
-        <input type="submit" class="button" value="Register" ng-click="register()"/>
+        <input type="submit" class="button" value="Register" ng-click="register(user)"/>
         <a href="#/login"><abbr title="Login">Login here</abbr></a>
     </form>
 </section>
