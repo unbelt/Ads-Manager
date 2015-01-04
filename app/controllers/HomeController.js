@@ -1,7 +1,8 @@
 'use strict';
 
-app.controller('HomeController',
-    function HomeController($scope, $rootScope) {
+app.controller('HomeController', ['$scope', '$rootScope',
+    function ($scope, $rootScope) {
+
         $rootScope.pageTitle = 'Home';
     }
-);
+]);

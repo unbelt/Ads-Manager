@@ -1,22 +1,56 @@
-<section ng-repeat="ad in catalog | filter: { categoryId: category.id || '!', townId: town.id || '!'}:true" class="box">
-    <article class="ad">
+<aside class="menu pull-right">
+    <section class="box">
         <header>
-            <time datetime="2008-02-14 20:00">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
-            <h2>{{ ad.title }}</h2>
+            <h2>Categories</h2>
         </header>
-        <figure>
-            <img src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
-        </figure>
+        <!--<nav>-->
+        <!--<ul>-->
+        <!--<li><a href="#/">All</a></li>-->
+        <!--<li ng-repeat="category in categories">{{ category.name }}</li>-->
+        <!--</ul>-->
+        <!--</nav>-->
 
-        <span>{{ ad.text }}</span>
+        <!-- TODO: Extract as partial-->
+        <select ng-init="select = 'All'" ng-model="category" ng-options="c.name for c in categories">
+            <option value="">{{select}}</option>
+        </select>
+    </section>
+    <section class="box">
+        <header>
+            <h2>Towns</h2>
+        </header>
+        <!--<nav>-->
+        <!--<ul>-->
+        <!--<li><a href="#/">All</a></li>-->
+        <!--<li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>-->
+        <!--</ul>-->
+        <!--</nav>-->
 
-        <p>Name: <span>{{ ad.ownerName }}</span></p>
+        <!-- TODO: Extract as partial-->
+        <select ng-model="town" ng-model="town" ng-options="t.name for t in towns">
+            <option value="">{{select}}</option>
+        </select>
+    </section>
+</aside>
 
-        <p>Email: <span>{{ ad.ownerEmail }}</span></p>
+<section class="ad box" ng-repeat="ad in catalog | filter: { categoryId: category.id || '!', townId: town.id || '!'}:true">
+    <header>
+        <time datetime="2008-02-14 20:00">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
+        <h2>{{ ad.title }}</h2>
+    </header>
+    <figure>
+        <img src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
+    </figure>
 
-        <p>Tel. <span>{{ ad.ownerPhone }}</span></p>
-    </article>
-    <p><em>Category: {{ getCategory(ad.categoryId) }}</em></p><br/>
+    <span>{{ ad.text }}</span>
 
-    <p><em>Town: {{ getTown(ad.townId) }}</em></p>
+    <p>Name: <span>{{ ad.ownerName }}</span></p>
+
+    <p>Email: <span>{{ ad.ownerEmail }}</span></p>
+
+    <p>Tel. <span>{{ ad.ownerPhone }}</span></p>
+
+    <p>Category: <em>{{ getCategory(ad.categoryId) }}</em></p><br/>
+
+    <p>Town: <em>{{ getTown(ad.townId) }}</em></p>
 </section>

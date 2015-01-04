@@ -37,7 +37,7 @@
         </nav>
     </section>
 
-    <section class="box">
+    <section class="box" ng-show="isAuthenticated">
         <header>
             <h2>Navigation</h2>
         </header>
@@ -53,42 +53,6 @@
 </aside>
 
 <section class="container" ng-view></section>
-
-<aside class="menu pull-right">
-    <section class="box">
-        <header>
-            <h2>Categories</h2>
-        </header>
-        <!--<nav>-->
-        <!--<ul>-->
-        <!--<li><a href="#/">All</a></li>-->
-        <!--<li ng-repeat="category in categories">{{ category.name }}</li>-->
-        <!--</ul>-->
-        <!--</nav>-->
-
-        <!-- TODO: Extract as partial-->
-        <select ng-init="select = 'All'" ng-model="category" ng-options="c.name for c in categories">
-            <option value="">{{select}}</option>
-        </select>
-    </section>
-
-    <section class="box">
-        <header>
-            <h2>Towns</h2>
-        </header>
-        <!--<nav>-->
-        <!--<ul>-->
-        <!--<li><a href="#/">All</a></li>-->
-        <!--<li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>-->
-        <!--</ul>-->
-        <!--</nav>-->
-
-        <!-- TODO: Extract as partial-->
-        <select ng-model="town" ng-model="town" ng-options="t.name for t in towns">
-            <option value="">{{select}}</option>
-        </select>
-    </section>
-</aside>
 
 <footer id="footer">
     <p>&copy; 2015 <a href="{{ author.website }}">{{ author.name }}</a>, No Rights Reserved</p>

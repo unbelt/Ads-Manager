@@ -1,7 +1,8 @@
 'use strict';
 
-app.controller('RegisterController',
-    function RegisterController($scope, $rootScope, $location, auth) {
+app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'auth',
+    function ($scope, $rootScope, $location, auth) {
+
         $rootScope.pageTitle = 'Register';
 
         $scope.register = function (user) {
@@ -12,4 +13,4 @@ app.controller('RegisterController',
             });
         }
     }
-);
+]);

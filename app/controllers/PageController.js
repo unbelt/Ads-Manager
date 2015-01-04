@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('PageController',
-    function PageController($scope, config, catalog, identity, auth) {
+app.controller('PageController', ['$scope', '$location', 'config', 'catalog', 'identity', 'auth',
+    function ($scope, $location, config, catalog, identity, auth) {
 
         var categories = catalog.getAll('categories').query();
         var towns = catalog.getAll('towns').query();
@@ -13,8 +13,8 @@ app.controller('PageController',
         $scope.currentUser = identity.getCurrentUser();
         $scope.isAuthenticated = identity.isAuthenticated();
 
-        $scope.logout = function() {
-            auth.logout().then(function() {
+        $scope.logout = function () {
+            auth.logout().then(function () {
                 console.log('Successful logout!'); // TODO: Build notification system
                 $location.path('/');
             })
@@ -33,4 +33,4 @@ app.controller('PageController',
             return id ? towns[id - 1].name : '[Homeless]'
         };
     }
-);
+]);

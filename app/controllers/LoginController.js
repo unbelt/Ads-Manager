@@ -2,6 +2,7 @@
 
 app.controller('LoginController', ['$scope', '$rootScope', '$location', 'identity', 'auth',
     function ($scope, $rootScope, $location, identity, auth) {
+
         $rootScope.pageTitle = 'Login';
         $scope.identity = identity;
 
