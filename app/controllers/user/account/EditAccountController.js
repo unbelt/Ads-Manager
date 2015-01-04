@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('EditController', ['$scope', '$rootScope',
+app.controller('EditAccountController', ['$scope', '$rootScope',
     function ($scope, $rootScope) {
 
         $rootScope.pageTitle = 'Edit User Profile';

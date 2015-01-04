@@ -1,14 +1,7 @@
 'use strict';
 
-app.controller('PageController', ['$scope', '$location', 'config', 'catalog', 'identity', 'auth',
-    function ($scope, $location, config, catalog, identity, auth) {
-
-        var categories = catalog.getAll('categories').query();
-        var towns = catalog.getAll('towns').query();
-
-        catalog.getAll('ads').get(function (data) {
-            $scope.catalog = data.ads;
-        });
+app.controller('PageController', ['$scope', '$location', 'config', 'identity', 'auth',
+    function ($scope, $location, config, identity, auth) {
 
         $scope.currentUser = identity.getCurrentUser();
         $scope.isAuthenticated = identity.isAuthenticated();
@@ -22,15 +15,5 @@ app.controller('PageController', ['$scope', '$location', 'config', 'catalog', 'i
 
         $scope.app = config.app;
         $scope.author = config.author;
-        $scope.categories = categories;
-        $scope.towns = towns;
-
-        $scope.getCategory = function (id) {
-            return id ? categories[id - 1].name : '[Uncategorized]';
-        };
-
-        $scope.getTown = function (id) {
-            return id ? towns[id - 1].name : '[Homeless]'
-        };
     }
 ]);

@@ -14,7 +14,7 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', funct
                     deferred.reject(response);
                 })
                 .error(function () {
-                    console.log('Register failed');
+                    console.log('');
                 });
 
             return deferred.promise;

@@ -27,9 +27,13 @@ var app = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
                 templateUrl: 'app/views/register.html',
                 controller: 'RegisterController'
             })
+            .when('/edit-profile', {
+                templateUrl: 'app/views/user/edit.html',
+                controller: 'EditAccountController'
+            })
             .when('/my-ads', {
                 templateUrl: 'app/views/user/catalog/show.html',
-                controller: 'CatalogController'
+                controller: 'UserCatalogController'
             })
             .when('/create-ad', {
                 templateUrl: 'app/views/user/catalog/create.html',
@@ -43,10 +47,7 @@ var app = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
                 templateUrl: 'app/views/user/catalog/delete.html',
                 controller: 'DeleteAdController'
             })
-            .when('/edit-profile', {
-                templateUrl: 'app/views/user/edit.html',
-                controller: 'EditUserController'
-            }) // *************************************************** Admin Area
+             // *************************************************** Admin Area
             .otherwise({redirectTo: '/home'});
     }
 );
