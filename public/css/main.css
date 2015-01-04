@@ -147,6 +147,7 @@ h1 {
 
 h2 {
     font-size: 1.3em;
+    margin-bottom: 20px;
 }
 
 h3 {
@@ -169,6 +170,11 @@ a {
     text-decoration: none;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+}
+
 input, select {
     width: 95%;
     margin: 10px 0;
@@ -176,11 +182,11 @@ input, select {
     display: block;
 }
 
+/* Common Assets */
 .selected {
     background-color: #daa600;
     border: 1px solid #7f6000;
 }
-
 .button {
     display: block;
     font-size: 1em;
@@ -190,25 +196,20 @@ input, select {
     border: 1px solid #67934b;
     border-radius: 7px;
 }
-
 .pull-left {
     float: left;
 }
-
 .pull-right {
     float: right;
 }
-
 .show {
     display: block;
 }
-
 .hide {
     display: none;
 }
 
 /* Main Page Styles */
-
 #header, #footer, .box {
     background-color: #a9d18e;
 }
@@ -228,11 +229,15 @@ input, select {
 }
 
 .container {
-    max-width: 66%;
+    max-width: 60%;
     display: inline-block;
 }
 
 /* Menu Boxes */
+aside.menu {
+    width: 20%;
+}
+
 .box {
     margin: 20px;
     padding: 30px;
@@ -242,42 +247,43 @@ input, select {
 
 .box > header h2 {
     height: 40px;
-    margin-bottom: 15px;
     text-align: center;
     border-bottom: 1px solid #507e32;
 }
 
-.menu > nav > ul li a {
+.box > nav > ul li a {
     display: block;
     padding: 10px;
     font-size: 1.2em;
     color: #000000;
 }
 
-.menu > nav > ul li a:hover {
+.box > nav > ul li a:hover {
     border: 1px solid #7f6000;
 }
 
 /* Advertising Box */
 .ad {
+    width: 100%;
     display: inline-block;
-}
-
-.ad header {
-    margin-bottom: 20px;
-}
-
-.ad header h2 {
-    text-align: left;
 }
 
 .ad header time {
     float: right;
 }
 
-.ad span {
+.ad p {
+    float: right;
     width: 80%;
-    text-align: left;
+}
+
+.ad p span {
+    width: 89%;
+}
+
+.ad span {
+    width: 78%;
+    float: right;
     padding: 10px;
     margin: 5px;
     background-color: #c5e0b4;
@@ -285,20 +291,19 @@ input, select {
     border: 1px solid #649b3f;
 }
 
-.ad-desc > span {
-    width: 95%;
+.ad figure {
+    width: 150px;
+    min-height: 170px;
+    float: left;
+    padding: 10px;
+    background-color: #e2f0d9;
+    border: 1px solid #649b3f;
 }
 
-.ad-desc {
-    width: 85%;
-    text-align: right;
-    float: right;
-}
 
-/* Login Box */
+/* Form Box */
 .form {
     border-radius: 10px;
-    min-width: 500px;
 }
 
 .form input[type=submit] {
@@ -322,11 +327,15 @@ input, select {
 /* Publish Ad Box */
 
 /* My Ads Box */
-.ad div {
-    float: left;
+.my  {
     width: 77%;
 }
-
+.my span, .my p {
+    width: 72%;
+}
+.my p span {
+    width: 85%;
+}
 .status {
     text-align: center;
     padding-left: 20px;
@@ -336,7 +345,8 @@ input, select {
     border-left: 1px solid #507e32;
 }
 
+
 /* Profile Box */
 .profile {
-    display: inline-block;
+    width: 100%;
 }

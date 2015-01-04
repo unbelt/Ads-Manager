@@ -1,6 +1,18 @@
 'use strict';
 
 var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
+    .constant('config', {
+        app: {
+            name: 'Ads',
+            fullName: 'Ads Manager',
+            api: 'http://localhost:1337/api/'
+        },
+        author: {
+            name: 'Flyer',
+            website: 'http://unbelt.wordpress.com/',
+            gitHub: 'https://github.com/unbelt/Ads-Manager'
+        }
+    })
     .config(function ($routeProvider) {
         $routeProvider
             .when('/home', {

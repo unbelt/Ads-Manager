@@ -1,18 +1,15 @@
 'use strict';
 
-adsApp.factory('catalogDataService', function catalogDataService($resource) {
-
-    var url = 'http://localhost:1337/api/';
-
+adsApp.factory('catalogDataService', function catalogDataService($resource, config) {
     return {
         get: function (resource, id) {
-            return $resource(url + resource + id);
+            return $resource(config.app.api + resource + id);
         },
         save: function (resource, data) {
-            return $resource(url + resource).save(data);
+            return $resource(config.app.api + resource).save(data);
         },
         getAll: function (resource) {
-            return $resource(url + resource);
+            return $resource(config.app.api + resource);
         }
     }
 });

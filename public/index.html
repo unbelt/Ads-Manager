@@ -17,11 +17,11 @@
 </div>
 
 <header id="header">
-    <h1>{{ adsApp.name }} - {{ pageTitle }}</h1>
+    <h1>{{ app.name }} - {{ pageTitle }}</h1>
 </header>
 
-<section class="pull-left">
-    <aside class="box menu">
+<aside class="menu pull-left">
+    <section class="box">
         <header>
             <p>To publish new ad, please login.</p>
         </header>
@@ -31,9 +31,9 @@
                 <li><a href="#/register" class="button">Register</a></li>
             </ul>
         </nav>
-    </aside>
+    </section>
 
-    <aside class="box menu">
+    <section class="box">
         <header>
             <h2>Navigation</h2>
         </header>
@@ -45,43 +45,41 @@
                 <li><a href="#/edit-profile">Edit Profile</a></li>
             </ul>
         </nav>
-    </aside>
-</section>
+    </section>
+</aside>
 
 <section class="container" ng-view></section>
 
-<section class="pull-right">
-    <aside class="box menu">
+<aside class="menu pull-right">
+    <section class="box">
         <header>
             <h2>Categories</h2>
         </header>
-        <nav ng-controller="HomeController">
+        <nav>
             <ul>
                 <li><a href="#/">All</a></li>
-                <li ng-repeat="category in categories"><a href="">{{ category.name }}</a></li>
+                <li ng-repeat="category in categories"><a href="#/">{{ category.name }}</a></li>
             </ul>
         </nav>
-    </aside>
+    </section>
 
-    <aside class="box menu">
+    <section class="box">
         <header>
             <h2>Towns</h2>
         </header>
-        <nav ng-controller="HomeController">
+        <nav>
             <ul>
                 <li><a href="#/">All</a></li>
                 <li ng-repeat="town in towns"><a href="">{{ town.name }}</a></li>
             </ul>
         </nav>
-    </aside>
-</section>
+    </section>
+</aside>
 
 <footer id="footer">
-    <p>&copy; 2015 <a href="{{ author.url }}">{{ author.name }}</a>, No Rights Reserved</p>
+    <p>&copy; 2015 <a href="{{ author.website }}">{{ author.name }}</a>, No Rights Reserved</p>
     <small>
-        <strong><a href="{{ author.repository }}">{{ adsApp.fullName }}</a> powered by:</strong>
-        <a href="http://angularjs.org/">AngularJS</a> and
-        <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+        <strong>Open source project:</strong> <a href="{{ author.gitHub }}">{{ app.fullName }}</a>
     </small>
 </footer>
 
@@ -98,5 +96,7 @@
 <script src="../app/controllers/user/catalog/CatalogController.js"></script>
 
 <script src="../app/services/catalogDataService.js"></script>
+<script src="../app/services/loginService.js"></script>
+<script src="../app/services/registerService.js"></script>
 </body>
 </html>
