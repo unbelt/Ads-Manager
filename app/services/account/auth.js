@@ -72,7 +72,7 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', funct
             var deferred = $q.defer();
             var headers = authorization.getAuthorizationHeader();
 
-            $http.put(usersApi + 'profile', user,{headers: headers})
+            $http.put(usersApi + 'profile', user, {headers: headers})
                 .success(function (response) {
                     deferred.resolve(response);
                 })
@@ -82,6 +82,20 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', funct
 
             return deferred.promise;
 
+        },
+        editUserPassword: function (user) {
+            var deferred = $q.defer();
+            var headers = authorization.getAuthorizationHeader();
+
+            $http.put(usersApi + '/ChangePassword', user, {headers: headers})
+                .success(function (response) {
+                    deferred.resolve(response);
+                })
+                .error(function (response) {
+                    console.log(response);
+                });
+
+            return deferred.promise;
         },
         isAuthenticated: function () {
             if (identity.isAuthenticated()) {

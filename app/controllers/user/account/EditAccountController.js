@@ -22,7 +22,10 @@ app.controller('EditAccountController', ['$scope', '$rootScope', 'auth',
         };
 
         $scope.changePassword = function (user) {
-            auth.editUserProfile(user);
+
+            auth.editUserPassword(user).then(function (res) {
+                console.log(res);
+            });
         }
     }
 ]);

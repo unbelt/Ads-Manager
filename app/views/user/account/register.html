@@ -29,7 +29,7 @@
         </div>
         <div>
             <label for="town">Town:</label>
-            <select id="town" ng-model="user.townId">
+            <select id="town" ng-model="user.townId" ng-controller="HomeController">
                 <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
