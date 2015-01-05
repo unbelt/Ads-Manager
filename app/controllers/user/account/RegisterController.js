@@ -1,16 +1,18 @@
 'use strict';
 
-app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'auth',
-    function ($scope, $rootScope, $location, auth) {
+angular.module('adsApp')
+    .controller('RegisterController', ['$scope', '$rootScope', '$location', 'auth',
+        function ($scope, $rootScope, $location, auth) {
 
-        $rootScope.pageTitle = 'Register';
+            $rootScope.pageTitle = 'Register';
 
-        $scope.register = function (user) {
+            $scope.register = function (user) {
 
-            auth.register(user).then(function () {
-                console.log('Registration successful!'); // TODO: Build notification system
-                $location.path('/');
-            });
+                auth.register(user).then(function () {
+                    console.log('Registration successful!'); // TODO: Build notification system
+                    $location.path('/');
+                });
+            }
         }
-    }
-]);
+    ]
+);

@@ -166,7 +166,7 @@ input, select {
     display: none;
 }
 
-.selected {
+.active {
     background-color: #daa600;
     border: 1px solid #7f6000;
 }
@@ -181,7 +181,16 @@ input, select {
 }
 
 /* Main Page Styles */
-#header, #footer, .box {
+.container {
+    float: right;
+    width: 80%;
+}
+
+#wrap {
+    height: 100%;
+}
+
+#header, #footer, .box, .pagination ul li {
     background-color: #a9d18e;
     box-shadow: 3px 3px 5px #abb6a4;
 }
@@ -201,17 +210,7 @@ input, select {
     clear: both;
 }
 
-.container {
-    width: 83%;
-    min-height: 100%;
-    display: inline-block;
-}
-
 /* Menu Boxes */
-aside.menu {
-    width: 17%;
-}
-
 .box {
     margin: 20px;
     padding: 30px;
@@ -227,11 +226,29 @@ aside.menu {
 
 .box > nav > ul li a:hover {
     border: 1px solid #7f6000;
+    cursor: pointer;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin: 3px;
+    padding: 9px;
+    cursor: pointer;
+    border: 1px solid #507e32;
+}
+
+.pagination ul li:hover {
+    color: #ffffff;
+    background-color: #548235;
 }
 
 /* Advertising Box */
 .ad {
-    width: 75%;
+    width: 70%;
     display: inline-block;
 }
 

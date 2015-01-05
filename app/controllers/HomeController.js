@@ -1,26 +1,51 @@
 'use strict';
 
-app.controller('HomeController', ['$scope', '$rootScope',  'catalog',
-    function ($scope, $rootScope, catalog) {
+angular.module('adsApp')
+    .controller('HomeController', ['$scope', '$rootScope', '$location', 'config', 'catalog',
+        function ($scope, $rootScope, $location, config, catalog) {
 
-        $rootScope.pageTitle = 'Home';
+            $rootScope.pageTitle = 'Home';
 
-        var categories = catalog.getAll('categories').query();
-        var towns = catalog.getAll('towns').query();
 
-        catalog.getAll('ads').get(function (data) {
-            $scope.catalog = data.ads;
-        });
+            $scope.getCatalog = function (category, town, startingPage, adsOnPage) {
 
-        $scope.categories = categories;
-        $scope.towns = towns;
+                var cat = category || '',
+                    t = town || '',
+                    page = startingPage || 1,
+                    ads = adsOnPage || 2;
 
-        $scope.getCategory = function (id) {
-            return id ? categories[id - 1].name : '[Uncategorized]';
-        };
+                catalog.getCatalog(cat, t, page, ads).then(function (catalog) {
+                    $scope.catalog = catalog;
+                    $scope.pages = new Array(catalog.numPages);
+                    $scope.currentPage = startingPage;
+                });
+            };
 
-        $scope.getTown = function (id) {
-            return id ? towns[id - 1].name : '[Homeless]'
-        };
-    }
-]);
+            catalog.getAll('categories').then(function (categories) {
+                $scope.categories = categories;
+            });
+            catalog.getAll('towns').then(function (towns) {
+                $scope.towns = towns;
+            });
+
+            //$scope.getCategory = function (id) {
+            //    return id ? categories[id - 1].name : '[Uncategorized]';
+            //};
+            //
+            //$scope.getTown = function (id) {
+            //    return id ? towns[id - 1].name : '[Homeless]'
+            //};
+
+            $scope.getActiveMenu = function (path) {
+                if ($location.path().substr(0, path.length) == path) {
+                    return 'active'
+                } else {
+                    return ''
+                }
+            };
+
+            $scope.app = config.app;
+            $scope.author = config.author;
+        }
+    ]
+);

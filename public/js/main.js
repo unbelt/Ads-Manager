@@ -1,9 +1,18 @@
 'use strict';
 
 (function () {
+
     // Page preloader
+    var preloader = document.createElement('div'),
+        spinner = document.createElement('span');
+    preloader.id = 'preloader';
+    spinner.className = 'spinner';
+    preloader.appendChild(spinner);
+
+    document.body.appendChild(preloader);
+
     setTimeout(function () {
-        var preloader = document.getElementById('preloader');
+        preloader = document.getElementById('preloader');
         preloader.style.opacity = 1;
 
         var refreshIntervalId = setInterval(function () {

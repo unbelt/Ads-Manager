@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
+angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
     .constant('config', {
         app: {
             name: 'Ads',

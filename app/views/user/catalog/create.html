@@ -12,14 +12,15 @@
         </div>
         <div>
             <label for="text">Text:</label>
-            <textarea name="" id="text" rows="8" placeholder="Description of your ad" required="required" ng-model="ad.text"></textarea>
+            <textarea name="" id="text" rows="8" placeholder="Description of your ad" required="required"
+                      ng-model="ad.text"></textarea>
         </div>
         <div>
             <label for="image">Image:</label>
             <!-- TODO: Matching regular expression pattern: ^data:image/.*$-->
             <input type="file" id="image" ng-model="ad.image"/>
         </div>
-        <div ng-controller="HomeController">
+        <div>
             <label for="category">Category:</label>
             <select name="" id="category" ng-model="ad.categoryId">
                 <option value="{{ category.id }}" ng-repeat="category in categories">{{ category.name }}</option>

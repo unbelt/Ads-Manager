@@ -1,0 +1,41 @@
+<section class="box" ng-hide="isAuthenticated">
+    <header>
+        <p>To publish new ad, please login.</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/login" class="button">Login</a></li>
+            <li><a href="#/register" class="button">Register</a></li>
+        </ul>
+    </nav>
+</section>
+
+<section class="box">
+    <header>
+        <h2>Navigation</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/home" ng-class="getActiveMenu('/home')">Home</a></li>
+            <li ng-show="isAuthenticated"><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">My Ads</a></li>
+            <li ng-show="isAuthenticated"><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Publish New Ad</a>
+            </li>
+            <li ng-show="isAuthenticated"><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Edit Profile</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<section class="box" ng-show="isAuthenticated && pageTitle == 'My Ads'">
+    <header>
+        <h2>My Ads</h2>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#/home" ng-class="getActiveMenu('/home')">All</a></li>
+            <li><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">Published</a></li>
+            <li><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Waiting Approval</a></li>
+            <li><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Inactive</a></li>
+        </ul>
+    </nav>
+</section>
