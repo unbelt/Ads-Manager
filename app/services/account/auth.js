@@ -1,29 +1,30 @@
 'use strict';
 
-app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', function($http, $q, identity, authorization, config) {
-    var usersApi = config.app.api + 'user';
+app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', function ($http, $q, identity, authorization, config) {
+    var usersApi = config.app.api + 'user/';
 
     return {
-        register: function(user) {
+        register: function (user) {
             var deferred = $q.defer();
 
-            $http.post(usersApi + '/register', user)
-                .success(function() {
+            $http.post(usersApi + 'register', user)
+                .success(function () {
                     deferred.resolve();
-                }, function(response) {
+                }, function (response) {
                     deferred.reject(response);
                 })
                 .error(function () {
-                    console.log('');
+                    console.log('Error registering');
                 });
 
             return deferred.promise;
         },
-        login: function(user){
+        login: function (user) {
             var deferred = $q.defer();
+
             user['grant_type'] = 'password';
-            $http.post(usersApi + '/login', 'username=' + user.username + '&password=' + user.password + '&grant_type=password', { headers: {'Content-Type': 'application/x-www-form-urlencoded'} })
-                .success(function(response) {
+            $http.post(usersApi + 'login', 'username=' + user.username + '&password=' + user.password + '&grant_type=password', {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                .success(function (response) {
                     if (response["access_token"]) {
                         identity.setCurrentUser(response);
                         deferred.resolve(true);
@@ -38,12 +39,12 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', funct
 
             return deferred.promise;
         },
-        logout: function() {
+        logout: function () {
             var deferred = $q.defer();
-
             var headers = authorization.getAuthorizationHeader();
-            $http.post(usersApi + '/logout', {}, { headers: headers })
-                .success(function() {
+
+            $http.post(usersApi + 'logout', {}, {headers: headers})
+                .success(function () {
                     identity.setCurrentUser(undefined);
                     deferred.resolve();
                 })
@@ -53,7 +54,36 @@ app.factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', funct
 
             return deferred.promise;
         },
-        isAuthenticated: function() {
+        getUserProfile: function () {
+            var deferred = $q.defer();
+            var headers = authorization.getAuthorizationHeader();
+
+            $http.get(usersApi + 'profile', {headers: headers})
+                .success(function (response) {
+                    deferred.resolve(response);
+                })
+                .error(function (response) {
+                    console.log(response);
+                });
+
+            return deferred.promise;
+        },
+        editUserProfile: function (user) {
+            var deferred = $q.defer();
+            var headers = authorization.getAuthorizationHeader();
+
+            $http.put(usersApi + 'profile', user,{headers: headers})
+                .success(function (response) {
+                    deferred.resolve(response);
+                })
+                .error(function (response) {
+                    console.log(response);
+                });
+
+            return deferred.promise;
+
+        },
+        isAuthenticated: function () {
             if (identity.isAuthenticated()) {
                 return true;
             }

@@ -1,8 +1,13 @@
 'use strict';
 
-app.controller('CreateAdController', ['$scope', '$rootScope',
-    function ($scope, $rootScope) {
+app.controller('CreateAdController', ['$scope', '$rootScope', 'userCatalog',
+    function ($scope, $rootScope, userCatalog) {
         $rootScope.pageTitle = 'Publish New Ad';
 
+        $scope.createAd = function (ad) {
+            //userCatalog.createAd(ad).then(function () {
+                console.log(ad);
+            //})
+        }
     }
 ]);

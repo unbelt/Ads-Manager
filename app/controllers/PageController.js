@@ -3,7 +3,12 @@
 app.controller('PageController', ['$scope', '$location', 'config', 'identity', 'auth',
     function ($scope, $location, config, identity, auth) {
 
-        $scope.currentUser = identity.getCurrentUser();
+        if(identity.isAuthenticated()) {
+            auth.getUserProfile().then(function (val) {
+                $scope.currentUser = val;
+            });
+        }
+
         $scope.isAuthenticated = identity.isAuthenticated();
 
         $scope.logout = function () {

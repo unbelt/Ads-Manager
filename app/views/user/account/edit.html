@@ -1,0 +1,44 @@
+<section class="box profile form">
+    <header>
+        <h2>Edit Profile</h2>
+    </header>
+
+    <form name="editAccountForm" ng-controller="PageController">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Name" value="{{ currentUser.name }}" required="required"/>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email" value="{{ currentUser.email }}" required="required"/>
+
+        <label for="phoneNumber">Phone:</label>
+        <input type="text" id="phoneNumber" placeholder="Phone" value="{{ currentUser.phoneNumber }}"/>
+
+        <label for="townId">Town:</label>
+        <select id="townId" ng-controller="HomeController">
+            <option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+        </select>
+
+        <input type="submit" class="button" value="Update" ng-click="editAccount()"/>
+        <a href="#/home" class="button">Cancel</a>
+    </form>
+</section>
+
+<section class="box profile form">
+    <header>
+        <h2>Change Password</h2>
+    </header>
+
+    <form name="changePasswordForm">
+        <label for="password-old">Old password:</label>
+        <input type="password" id="password-old" placeholder="Password"/>
+
+        <label for="password">New password:</label>
+        <input type="password" id="password" placeholder="Password"/>
+
+        <label for="password-rep">Confirm new password:</label>
+        <input type="password" id="password-rep" placeholder="Password" ng-model="user.password"/>
+
+        <input type="submit" class="button" value="Change" ng-click="changePassword(user)"/>
+        <a href="#/home" class="button">Cancel</a>
+    </form>
+</section>

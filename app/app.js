@@ -20,15 +20,15 @@ var app = angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
                 controller: 'HomeController'
             })
             .when('/login', {
-                templateUrl: 'app/views/login.html',
+                templateUrl: 'app/views/user/account/login.html',
                 controller: 'LoginController'
             })
             .when('/register', {
-                templateUrl: 'app/views/register.html',
+                templateUrl: 'app/views/user/account/register.html',
                 controller: 'RegisterController'
             })
             .when('/edit-profile', {
-                templateUrl: 'app/views/user/edit.html',
+                templateUrl: 'app/views/user/account/edit.html',
                 controller: 'EditAccountController'
             })
             .when('/my-ads', {
