@@ -9,7 +9,7 @@ angular.module('adsApp')
             $scope.register = function (user) {
 
                 auth.register(user).then(function () {
-                    console.log('Registration successful!'); // TODO: Build notification system
+                    auth.login(user.username, user.password);
                     $location.path('/');
                 });
             }

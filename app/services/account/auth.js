@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('auth', ['$http', '$q', 'identity', 'authorization', 'config',
-        function ($http, $q, identity, authorization, config) {
+    .factory('auth', ['$http', '$q', '$rootScope', 'identity', 'authorization', 'config',
+        function ($http, $q, $rootScope, identity, authorization, config) {
             var usersApi = config.app.api + 'user/';
 
             return {
@@ -10,13 +10,12 @@ angular.module('adsApp')
                     var deferred = $q.defer();
 
                     $http.post(usersApi + 'register', user)
-                        .success(function () {
-                            deferred.resolve();
-                        }, function (response) {
-                            deferred.reject(response);
+                        .success(function (response) {
+                            deferred.resolve(response);
+                            $rootScope.message = 'User account created.';
                         })
                         .error(function () {
-                            console.log('Error registering');
+                            $rootScope.message = 'Registration failed! Please sign up all fields!';
                         });
 
                     return deferred.promise;
@@ -36,7 +35,7 @@ angular.module('adsApp')
                             }
                         })
                         .error(function () {
-                            console.log('Login failed');
+                            $rootScope.message = 'Invalid login!';
                         });
 
                     return deferred.promise;
@@ -48,10 +47,11 @@ angular.module('adsApp')
                     $http.post(usersApi + 'logout', {}, {headers: headers})
                         .success(function () {
                             identity.setCurrentUser(undefined);
-                            deferred.resolve();
+                            deferred.resolve(true);
+                            $rootScope.message = 'You have logged out successfully.';
                         })
                         .error(function () {
-                            console.log('Logout failed');
+                            $rootScope.message = 'Logout failed! Please try again!';
                         });
 
                     return deferred.promise;
@@ -64,8 +64,8 @@ angular.module('adsApp')
                         .success(function (response) {
                             deferred.resolve(response);
                         })
-                        .error(function (response) {
-                            console.log(response);
+                        .error(function () {
+                            $rootScope.message = 'Cannot load user profile!';
                         });
 
                     return deferred.promise;
@@ -77,9 +77,10 @@ angular.module('adsApp')
                     $http.put(usersApi + 'profile', user, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
+                            $rootScope.message = 'User profile successfully updated.';
                         })
-                        .error(function (response) {
-                            console.log(response);
+                        .error(function () {
+                            $rootScope.message = 'User profile failed to update!';
                         });
 
                     return deferred.promise;
@@ -92,9 +93,10 @@ angular.module('adsApp')
                     $http.put(usersApi + '/ChangePassword', user, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
+                            $rootScope.message = 'User password successfully updated.';
                         })
-                        .error(function (response) {
-                            console.log(response);
+                        .error(function () {
+                            $rootScope.message = 'User password failed to updated!';
                         });
 
                     return deferred.promise;
@@ -104,7 +106,7 @@ angular.module('adsApp')
                         return true;
                     }
                     else {
-                        return $q.reject('not authorized');
+                        return $q.reject($rootScope.message = 'not authorized');
                     }
                 }
             }

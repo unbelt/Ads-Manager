@@ -10,8 +10,9 @@ angular.module('adsApp')
                     $http.get(config.app.api + resource)
                         .success(function (response) {
                             deferred.resolve(response);
-                        }, function () {
-                            console.log('fail');
+                        })
+                        .error(function () {
+                            $rootScope.message = resource + ' failed to load!';
                         });
 
                     return deferred.promise;
@@ -20,15 +21,16 @@ angular.module('adsApp')
                     var deferred = $q.defer();
 
                     $http.get(config.app.api +
-                    'ads?categoryId=' + categoryId +
-                    '&townId=' + townId +
-                    '&startPage=' + startPage +
-                    '&pageSize=' + pageSize
+                        'ads?categoryId=' + categoryId +
+                        '&townId=' + townId +
+                        '&startPage=' + startPage +
+                        '&pageSize=' + pageSize
                     )
                         .success(function (response) {
                             deferred.resolve(response);
-                        }, function () {
-                            console.log('fail');
+                        })
+                        .error(function () {
+                            $rootScope.message = 'Advertisements failed to load!';
                         });
 
                     return deferred.promise;
@@ -46,7 +48,7 @@ angular.module('adsApp')
                         .success(function (response) {
                             deferred.resolve(response);
                         }, function () {
-                            console.log('fail');
+                            $rootScope.message = 'User advertisements failed to load!';
                         });
 
                     return deferred.promise;
@@ -58,8 +60,10 @@ angular.module('adsApp')
                     $http.post(config.app.api + 'user/ads', ad, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                        }, function () {
-                            console.log('Failed');
+                            $rootScope.message = 'Advertisement submitted for approval. Once approved, it will be published.';
+                        })
+                        .error(function () {
+                            $rootScope.message = 'Advertisement failed to submit!';
                         });
 
                     return deferred.promise;
@@ -68,12 +72,13 @@ angular.module('adsApp')
                     var deferred = $q.defer();
                     var headers = authorization.getAuthorizationHeader();
 
-                    $http.put(config.app.api + 'user/ads/' + status +'/' + id, {}, {headers: headers})
+                    $http.put(config.app.api + 'user/ads/' + status + '/' + id, {}, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'success';
-                        }, function () {
-                            $rootScope.message = 'error';
+                            $rootScope.message = 'Your advertisement now is ' + status;
+                        })
+                        .error(function () {
+                            $rootScope.message = 'Error changing the status of your advertisement!';
                         });
 
                     return deferred.promise;
@@ -85,9 +90,10 @@ angular.module('adsApp')
                     $http.put(config.app.api + 'user/ads/' + id, ad, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            console.log(response);
-                        }, function () {
-                            console.log('Fail');
+                            $rootScope.message = 'Advertisement edited. Don\'t forget to submit it for publishing.';
+                        })
+                        .error(function () {
+                            $rootScope.message = 'Advertisement failed to edited!';
                         });
 
                     return deferred.promise;
@@ -98,9 +104,11 @@ angular.module('adsApp')
 
                     $http(config.app.api + 'user/ads' + id, {}, {headers: headers})
                         .success(function (response) {
-                            deferred.resolve(response)
-                        }, function () {
-                            console.log('Failed');
+                            deferred.resolve(response);
+                            $rootScope.message = 'Advertisement deleted successfully!';
+                        })
+                        .error(function () {
+                            $rootScope.message = 'Advertisement failed to delete!';
                         });
 
                     return deferred.promise;
