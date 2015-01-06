@@ -1,23 +1,26 @@
 <section class="box ad">
     <header>
-        <time datetime="2008-02-14 20:00">3-Jan-2015</time>
         <h2>Confirm Deleting Ad?</h2>
     </header>
 
-    <figure>
-        <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
-    </figure>
+    <section>
+        <header>
+            <time datetime="2008-02-14 20:00">3-Jan-2015</time>
+            <h3>Title</h3>
+        </header>
 
-    <section class="ad-desc">
+        <figure>
+            <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
+        </figure>
+
         <span>I have iPhone 4S 16GB for sale. Good price. Like a new. Please call me in the evenings or at weekends.</span>
 
-        <p>Name: <span>Victor</span></p>
+        <p>Category: <span>Victor</span></p>
 
-        <p>Email: <span>igra4a@abv.bg</span></p>
+        <p>Town: <span>igra4a@abv.bg</span></p>
 
-        <p>Tel. <span>+359 888 77 55 44</span></p>
+        <input type="button" class="button" value="Delete" ng-click="deleteAd(ad.id)"/>
+        <a href="#/my-ads" class="button pull-right">Cancel</a>
     </section>
 
-    <a href="" class="button" ng-click="deleteAd(ad.id)">Delete</a>
-    <a href="#/home" class="button">Cancel</a>
 </section>

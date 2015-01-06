@@ -126,10 +126,15 @@ input, select {
     -webkit-animation: spin 600ms infinite linear;
 }
 
-html, body {
+html {
+    height: 100%;
+}
+
+body {
     height: 100%;
     font-size: 20px;
     background-color: #e2f0d9;
+    margin: 0 0 100px;
 }
 
 h1 { font-size: 1.6em;}
@@ -166,12 +171,27 @@ input, select {
     display: none;
 }
 
+.message {
+    opacity: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    line-height: 50px;
+    border-radius: 3px;
+    border: #74903b;
+    color: #ffffff;
+    background-color: #88a945;
+}
+
 .active {
     background-color: #daa600;
     border: 1px solid #7f6000;
 }
-.button {
-    display: block;
+.button, a.button {
+    width: auto;
+    color: #ffffff;
+    display: inline-block;
+    padding: 10px;
     font-size: 1em;
     text-align: center;
     margin-top: 15px;
@@ -181,13 +201,12 @@ input, select {
 }
 
 /* Main Page Styles */
+#wrap {
+    height: 100%
+}
 .container {
     float: right;
     width: 80%;
-}
-
-#wrap {
-    height: 100%;
 }
 
 #header, #footer, .box, .pagination ul li {
@@ -203,14 +222,18 @@ input, select {
 }
 
 #footer {
-    padding: 10px;
-    margin-top: 20px;
+    padding-top: 15px;
     border-top: 1px solid #507e32;
     text-align: center;
     clear: both;
+    height: 50px;
+    width: 100%;
 }
 
 /* Menu Boxes */
+.menu {
+    clear: both;
+}
 .box {
     margin: 20px;
     padding: 30px;

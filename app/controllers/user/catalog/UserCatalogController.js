@@ -29,9 +29,7 @@ angular.module('adsApp')
                     status = 'deactivate'
                 }
 
-                catalog.changeAdStatus(id, status).then(function (response) {
-                    //console.log(response);
-                })
+                catalog.changeAdStatus(id, status);
             }
         }
     ]

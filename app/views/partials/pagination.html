@@ -1,4 +1,6 @@
-<ul>
+<h1 ng-show="catalog.numPages == 0">No Ads in at the moment!</h1>
+
+<ul ng-hide="catalog.numPages == 0">
     <li ng-click="getCatalog('', '', 1)">First</li>
     <li ng-click="getCatalog('', '', currentPage - 1 < 1 ? 0 : currentPage - 1)">Previous</li>
     <li ng-repeat="page in pages track by $index" ng-click="getCatalog('', '', $index + 1)">{{ $index + 1 }}</li>

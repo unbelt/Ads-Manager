@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('catalog', ['$resource', '$http', '$q', 'config', 'authorization',
-        function ($resource, $http, $q, config, authorization) {
+    .factory('catalog', ['$resource', '$http', '$q', '$rootScope', 'config', 'authorization',
+        function ($resource, $http, $q, $rootScope, config, authorization) {
             return {
                 getAll: function (resource) {
                     var deferred = $q.defer();
@@ -71,9 +71,9 @@ angular.module('adsApp')
                     $http.put(config.app.api + 'user/ads/' + status +'/' + id, {}, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            console.log(response);
+                            $rootScope.message = 'success';
                         }, function () {
-                            console.log('fail');
+                            $rootScope.message = 'error';
                         });
 
                     return deferred.promise;

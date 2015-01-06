@@ -34,4 +34,5 @@
             link.setAttribute('target', '_blank');
         }
     });
+
 }());

@@ -7,6 +7,14 @@ angular.module('adsApp')
 
             $scope.ad = {townId: null, categoryId: null};
 
+            catalog.getAll('categories').then(function (categories) {
+                $scope.categories = categories;
+            });
+
+            catalog.getAll('towns').then(function (towns) {
+                $scope.towns = towns;
+            });
+
             $scope.fileSelected = function (fileInputField) {
 
                 delete $scope.ad.imageDataUrl;

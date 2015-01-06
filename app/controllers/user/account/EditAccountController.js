@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('EditAccountController', ['$scope', '$rootScope', 'auth',
-        function ($scope, $rootScope, auth) {
+    .controller('EditAccountController', ['$scope', '$rootScope', 'auth', 'catalog',
+        function ($scope, $rootScope, auth, catalog) {
 
             $rootScope.pageTitle = 'Edit User Profile';
+
+            catalog.getAll('towns').then(function (towns) {
+                $scope.towns = towns;
+            });
+
+            auth.getUserProfile().then(function (user) {
+                $scope.user = user;
+            });
 
             $scope.editAccount = function () {
 
@@ -22,10 +30,7 @@ angular.module('adsApp')
                 });
             };
 
-            $scope.selectedValue = getTown(auth.getUserProfile().townId);
-
-                $scope.changePassword = function (user) {
-
+            $scope.changePassword = function (user) {
                 auth.editUserPassword(user).then(function (res) {
                     console.log(res);
                 });
