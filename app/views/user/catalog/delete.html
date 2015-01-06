@@ -3,7 +3,10 @@
         <time datetime="2008-02-14 20:00">3-Jan-2015</time>
         <h2>Confirm Deleting Ad?</h2>
     </header>
-    <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
+
+    <figure>
+        <img src="http://placehold.it/130x160" alt="iPhone" class="pull-left"/>
+    </figure>
 
     <section class="ad-desc">
         <span>I have iPhone 4S 16GB for sale. Good price. Like a new. Please call me in the evenings or at weekends.</span>
@@ -15,6 +18,6 @@
         <p>Tel. <span>+359 888 77 55 44</span></p>
     </section>
 
-    <input type="button" class="button" value="Delete"/>
+    <a href="" class="button" ng-click="deleteAd(ad.id)">Delete</a>
     <a href="#/home" class="button">Cancel</a>
 </section>

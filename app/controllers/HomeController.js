@@ -6,13 +6,12 @@ angular.module('adsApp')
 
             $rootScope.pageTitle = 'Home';
 
-
-            $scope.getCatalog = function (category, town, startingPage, adsOnPage) {
+            var getCatalog = function (category, town, startingPage, pageSize) {
 
                 var cat = category || '',
                     t = town || '',
                     page = startingPage || 1,
-                    ads = adsOnPage || 2;
+                    ads = pageSize || 2;
 
                 catalog.getCatalog(cat, t, page, ads).then(function (catalog) {
                     $scope.catalog = catalog;
@@ -21,20 +20,15 @@ angular.module('adsApp')
                 });
             };
 
+            $scope.getCatalog = getCatalog;
+            getCatalog();
+
             catalog.getAll('categories').then(function (categories) {
                 $scope.categories = categories;
             });
             catalog.getAll('towns').then(function (towns) {
                 $scope.towns = towns;
             });
-
-            //$scope.getCategory = function (id) {
-            //    return id ? categories[id - 1].name : '[Uncategorized]';
-            //};
-            //
-            //$scope.getTown = function (id) {
-            //    return id ? towns[id - 1].name : '[Homeless]'
-            //};
 
             $scope.getActiveMenu = function (path) {
                 if ($location.path().substr(0, path.length) == path) {

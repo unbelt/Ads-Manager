@@ -2,37 +2,41 @@
     <header>
         <h2>Publish New Ad</h2>
     </header>
-    <form class="publish" name="createAdForm">
-        <figure>
-            <img src="" alt=""/>
-        </figure>
+    <form name="createAdForm">
         <div>
             <label for="title">Title:</label>
             <input type="text" id="title" placeholder="Title" required="required" ng-model="ad.title"/>
         </div>
+
+        <div>
+            <input type="file" id="image" onchange="angular.element(this).scope().fileSelected(this)"/>
+            <figure class="image-box">
+                <p>Image Preview</p>
+            </figure>
+        </div>
+
         <div>
             <label for="text">Text:</label>
-            <textarea name="" id="text" rows="8" placeholder="Description of your ad" required="required"
+            <textarea id="text" rows="5" cols="47" placeholder="Description of your ad" required="required"
                       ng-model="ad.text"></textarea>
         </div>
-        <div>
-            <label for="image">Image:</label>
-            <!-- TODO: Matching regular expression pattern: ^data:image/.*$-->
-            <input type="file" id="image" ng-model="ad.image"/>
-        </div>
-        <div>
+
+        <div ng-controller="HomeController">
             <label for="category">Category:</label>
             <select name="" id="category" ng-model="ad.categoryId">
+                <option value="null">(None)</option>
                 <option value="{{ category.id }}" ng-repeat="category in categories">{{ category.name }}</option>
             </select>
             <label for="town">Town:</label>
             <select name="" id="town" ng-model="ad.townId">
+                <option value="null">(None)</option>
                 <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
+
         <div>
-            <input type="submit" class="button" value="Publish" ng-click="createAd(ad)"/>
-            <a href="#/home" class="button pull-right">Cancel</a>
+            <a href="#/home" class="button">Cancel</a>
+            <a href="" class="button" ng-click="createAd(ad)">Publish</a>
         </div>
     </form>
 </section>

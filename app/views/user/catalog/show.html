@@ -1,7 +1,7 @@
-<section ng-repeat="ad in catalog" class="box">
+<section ng-repeat="ad in userCatalog.ads" class="box">
     <article class="my ad">
         <header>
-            <time datetime="2008-02-14 20:00">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
+            <time datetime="{{ ad.date | date : 'd-MMM-yyyy' }}">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
             <h2>{{ ad.title }}</h2>
         </header>
 
@@ -11,16 +11,21 @@
 
         <span>{{ ad.text }}</span>
 
-        <p>Name: <span>{{ ad.ownerName }}</span></p>
+        <p>Category: <span>{{ ad.categoryName }}</span></p>
 
-        <p>Email: <span>{{ ad.ownerEmail }}</span></p>
+        <p>Town: <span>{{ ad.townName }}</span></p>
 
-        <p>Tel. <span>{{ ad.ownerPhone }}</span></p>
     </article>
 
     <section class="status">
         <p>Status:</p>
-        <span>Waiting Approval</span>
-        <input type="submit" value="Deactivate" class="button"/>
+        <span>{{ ad.status }}</span>
+        <a href="" class="button" ng-click="changeAdStatus(ad.id, false)" ng-hide="ad.status == 'Inactive'">Deactivate</a>
+
+        <div ng-show="ad.status == 'Inactive'">
+            <a href="#/edit-ad" class="button">Edit</a>
+            <a href="" class="button" ng-click="changeAdStatus(ad.id, true)">Publish Again</a>
+            <a href="#/delete-ad" class="button">Delete</a>
+        </div>
     </section>
 </section>
