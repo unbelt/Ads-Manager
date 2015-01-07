@@ -1,8 +1,6 @@
 <h1 ng-show="catalog.numPages == 0" class="message">No Ads in at the moment!</h1>
 
-<!--TODO: Fix pagination length-->
-
-<ul ng-hide="catalog.numPages < 2 ||  loading">
+<ul ng-hide="catalog.numPages < 2">
     <li ng-click="changePage(1)">First</li>
     <li ng-click="changePage(adsParams.startPage - 1)">Previous</li>
     <li ng-class="{'active': $index + 1 == adsParams.startPage}" ng-repeat="page in pages track by $index" ng-click="changePage($index + 1)">

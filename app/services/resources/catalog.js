@@ -35,14 +35,14 @@ angular.module('adsApp')
 
                     return deferred.promise;
                 },
-                getUserCatalog: function (status, startPage, pageSize) {
+                getUserCatalog: function (adsParams) {
                     var deferred = $q.defer();
                     var headers = authorization.getAuthorizationHeader();
 
                     $http.get(config.app.api +
-                        'user/ads?status=' + status +
-                        '&StartPage=' + startPage +
-                        '&PageSize=' + pageSize,
+                        'user/ads?status=' + adsParams.status +
+                        '&StartPage=' + adsParams.startPage +
+                        '&PageSize=' + adsParams.pageSize,
                         {headers: headers}
                     )
                         .success(function (response) {

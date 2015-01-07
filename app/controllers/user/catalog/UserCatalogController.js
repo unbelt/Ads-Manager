@@ -5,22 +5,43 @@ angular.module('adsApp')
         function ($scope, $rootScope, catalog) {
             $rootScope.pageTitle = 'My Ads';
 
-            var getUserCatalog = function (status, startingPage, pageSize) {
+            var adsParams = {
+                'status': '',
+                'startPage': 1,
+                'pageSize': 2
+            };
+
+            $scope.adsParams = adsParams;
+
+            $scope.getUserCatalog = function () {
                 $rootScope.loading = true;
 
-                status = status || '';
-                startingPage = startingPage || 1;
-                pageSize = pageSize || 5;
-
-                catalog.getUserCatalog(status, startingPage, pageSize).then(function (catalog) {
-                    $scope.userCatalog = catalog;
+                catalog.getUserCatalog(adsParams).then(function (catalog) {
+                    $scope.catalog = catalog;
                     $scope.pages = new Array(catalog.numPages);
-                    $scope.currentPage = startingPage;
                 }).finally(function () {
                     $rootScope.loading = false;
                 });
             };
-            getUserCatalog();
+            $scope.getUserCatalog();
+
+            $scope.changePage = function (page) {
+                if (page < 1) {
+                    page = 1;
+                }
+                else if (page > $scope.pages.length) {
+                    page = $scope.pages.length;
+                }
+
+                adsParams.startPage = page;
+                $scope.getUserCatalog();
+            };
+
+            $scope.$on('statusChanged', function (event, selectedStatus) {
+                adsParams.status = selectedStatus;
+                adsParams.startPage = 1;
+                $scope.getUserCatalog();
+            });
 
             $scope.changeAdStatus = function (id, status) {
                 if (status) {
@@ -30,7 +51,7 @@ angular.module('adsApp')
                 }
 
                 catalog.changeAdStatus(id, status).then(function () {
-                    getUserCatalog();
+                    $scope.getUserCatalog();
                 });
             }
         }

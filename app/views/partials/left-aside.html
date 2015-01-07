@@ -34,11 +34,11 @@
     </header>
     <nav>
         <ul>
-            <li><a href="" ng-click="getUserCatalog('')">All</a></li>
-            <li><a href="" ng-click="getUserCatalog(3)">Published</a></li>
-            <li><a href="" ng-click="getUserCatalog(2)">Published</a></li>
-            <li><a href="" ng-click="getUserCatalog(1)">Waiting Approval</a></li>
-            <li><a href="" ng-click="getUserCatalog(0)">Inactive</a></li>
+            <li ng-class="{'active': selectedStatus == value}"
+                ng-repeat="(key, value) in adsStates"
+                ng-click="statusClicked(value)">
+                <a href="">{{ key }}</a>
+            </li>
         </ul>
     </nav>
 </section>

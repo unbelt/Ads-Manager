@@ -1,4 +1,4 @@
-<section ng-repeat="ad in userCatalog.ads" class="box user-ads">
+<section ng-repeat="ad in catalog.ads" class="box user-ads">
     <article class="ad">
         <header>
             <time datetime="{{ ad.date | date : 'd-MMM-yyyy' }}">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
@@ -30,3 +30,5 @@
         </section>
     </article>
 </section>
+
+<nav class="pagination" ng-include="'../app/views/partials/pagination.html'"></nav>
