@@ -1,5 +1,5 @@
-<aside ng-show="isAuthenticated">
-    <p class="pull-right">{{ currentUser.name }} <a href="#" ng-click="logout()">Logout</a></p>
+<aside ng-show="auth.isAuthenticated()">
+    <p class="pull-right">{{  auth.getCurrentUser().username }} <a href="#" ng-click="logout()">Logout</a></p>
 </aside>
 
-<h1>{{ app.name }} - {{ pageTitle }}</h1>
+<h1>{{ config.app.name }} - {{ pageTitle }}</h1>

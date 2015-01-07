@@ -37,10 +37,8 @@ angular.module('adsApp')
             };
 
             $scope.createAd = function (ad) {
-
                 catalog.createAd(ad).then(function () {
-                    console.log('Created');
-                    $location.path('/');
+                    $location.path('/my-ads');
                 });
             };
         }

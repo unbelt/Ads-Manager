@@ -23,9 +23,6 @@ angular.module('adsApp')
                 }
 
                 currentUser = user;
-            },
-            isAuthenticated: function () {
-                return !!this.getCurrentUser();
             }
         }
     }]

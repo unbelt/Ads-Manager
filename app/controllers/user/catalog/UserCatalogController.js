@@ -5,11 +5,10 @@ angular.module('adsApp')
         function ($scope, $rootScope, catalog) {
             $rootScope.pageTitle = 'My Ads';
 
-
             var getUserCatalog = function (status, startingPage, pageSize) {
                 status = status || '';
                 startingPage = startingPage || 1;
-                pageSize = pageSize || 2;
+                pageSize = pageSize || 5;
 
                 catalog.getUserCatalog(status, startingPage, pageSize).then(function (catalog) {
                     $scope.userCatalog = catalog;
@@ -17,19 +16,19 @@ angular.module('adsApp')
                     $scope.currentPage = startingPage;
                 });
             };
-
             getUserCatalog();
-
 
             $scope.changeAdStatus = function (id, status) {
 
-                if(status){
+                if (status) {
                     status = 'publishAgain'
                 } else {
                     status = 'deactivate'
                 }
 
-                catalog.changeAdStatus(id, status);
+                catalog.changeAdStatus(id, status).then(function () {
+                    getUserCatalog();
+                });
             }
         }
     ]

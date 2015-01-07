@@ -96,18 +96,16 @@ angular.module('adsApp')
                             $rootScope.message = 'User password successfully updated.';
                         })
                         .error(function () {
-                            $rootScope.message = 'User password failed to updated!';
+                            $rootScope.message = 'User password failed to change!';
                         });
 
                     return deferred.promise;
                 },
+                getCurrentUser: function () {
+                    return identity.getCurrentUser();
+                },
                 isAuthenticated: function () {
-                    if (identity.isAuthenticated()) {
-                        return true;
-                    }
-                    else {
-                        return $q.reject($rootScope.message = 'not authorized');
-                    }
+                    return !!identity.getCurrentUser();
                 }
             }
         }

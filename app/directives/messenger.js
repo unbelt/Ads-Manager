@@ -1,4 +1,5 @@
 angular.module('adsApp').directive('messenger', ['$timeout', function ($timeout) {
+
     return {
         restrict: 'A',
         replace: true,

@@ -1,26 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="adsApp" ng-controller="AppController">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Advertising Manager System">
 
-    <title>Ads App</title>
+    <title>{{ config.app.name }} &ndash; {{ pageTitle }}</title>
     <link rel="stylesheet" href="../public/css/main.css"/>
 </head>
-<body ng-app="adsApp">
+<body>
 
-<header id="header" ng-include="'../app/views/partials/header.html'" ng-controller="AccountController"></header>
+<header id="header" ng-include="'../app/views/partials/header.html'"></header>
 
 <main id="wrap">
     <div messenger></div>
+    <div class="spinner" ng-show="loading"></div>
 
-    <aside class="menu pull-left"
-           ng-include="'../app/views/partials/aside.html'"
-           ng-controller="AccountController">
-    </aside>
-    <section class="container" ng-view></section>
+    <aside class="menu pull-left" ng-include="'../app/views/partials/aside.html'"></aside>
+
+    <section class="container" ng-view ng-class="{'loading': loading}"></section>
 </main>
 
 <footer id="footer" ng-include="'../app/views/partials/footer.html'"></footer>
@@ -34,21 +33,20 @@
 <script src="../app/app.js"></script>
 <script src="../app/directives/messenger.js"></script>
 
+<script src="../app/services/resources/catalog.js"></script>
+<script src="../app/services/account/auth.js"></script>
+<script src="../app/services/account/authorization.js"></script>
+<script src="../app/services/account/identity.js"></script>
+
+<script src="../app/controllers/AppController.js"></script>
 <script src="../app/controllers/HomeController.js"></script>
 
-<script src="../app/controllers/user/account/AccountController.js"></script>
 <script src="../app/controllers/user/account/LoginController.js"></script>
 <script src="../app/controllers/user/account/RegisterController.js"></script>
 <script src="../app/controllers/user/account/EditAccountController.js"></script>
 
 <script src="../app/controllers/user/catalog/UserCatalogController.js"></script>
 <script src="../app/controllers/user/catalog/CreateAdController.js"></script>
-
-<script src="../app/services/resources/catalog.js"></script>
-<script src="../app/services/account/auth.js"></script>
-<script src="../app/services/account/authorization.js"></script>
-<script src="../app/services/account/identity.js"></script>
-
 
 </body>
 </html>

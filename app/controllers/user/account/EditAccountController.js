@@ -15,7 +15,6 @@ angular.module('adsApp')
             });
 
             $scope.editAccount = function () {
-
                 var editForm = angular.element(window.document)[0].editAccountForm;
 
                 var user = {
@@ -25,15 +24,11 @@ angular.module('adsApp')
                     townId: editForm.townId.value
                 };
 
-                auth.editUserProfile(user).then(function (res) {
-                    console.log(res);
-                });
+                auth.editUserProfile(user);
             };
 
             $scope.changePassword = function (user) {
-                auth.editUserPassword(user).then(function (res) {
-                    console.log(res);
-                });
+                auth.editUserPassword(user);
             }
         }
     ]

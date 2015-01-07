@@ -30,7 +30,8 @@
         <div>
             <label for="town">Town:</label>
             <select id="town" ng-model="user.townId">
-                <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
+                <option value="null">[homeless]</option>
+                <option value="" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
         <input type="submit" class="button" value="Register" ng-click="register(user)"/>

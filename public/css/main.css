@@ -170,9 +170,12 @@ input, select {
 .hide {
     display: none;
 }
+.loading {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 .message {
-    opacity: 0;
     margin: 0 auto;
     text-align: center;
     width: 50%;
@@ -232,6 +235,7 @@ input, select {
 
 /* Menu Boxes */
 .menu {
+    width: 20%;
     clear: both;
 }
 .box {

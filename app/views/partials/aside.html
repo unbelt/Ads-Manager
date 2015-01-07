@@ -1,4 +1,4 @@
-<section class="box" ng-hide="isAuthenticated">
+<section class="box" ng-hide="auth.isAuthenticated()">
     <header>
         <p>To publish new ad, please login.</p>
     </header>
@@ -17,16 +17,16 @@
     <nav>
         <ul>
             <li><a href="#/home" ng-class="getActiveMenu('/home')">Home</a></li>
-            <li ng-show="isAuthenticated"><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">My Ads</a></li>
-            <li ng-show="isAuthenticated"><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Publish New Ad</a>
+            <li ng-show="auth.isAuthenticated()"><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">My Ads</a></li>
+            <li ng-show="auth.isAuthenticated()"><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Publish New Ad</a>
             </li>
-            <li ng-show="isAuthenticated"><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Edit Profile</a>
+            <li ng-show="auth.isAuthenticated()"><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Edit Profile</a>
             </li>
         </ul>
     </nav>
 </section>
 
-<section class="box" ng-show="isAuthenticated && pageTitle == 'My Ads'">
+<section class="box" ng-show="auth.isAuthenticated() && pageTitle == 'My Ads'">
     <header>
         <h2>My Ads</h2>
     </header>

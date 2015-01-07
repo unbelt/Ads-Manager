@@ -7,6 +7,7 @@ angular.module('adsApp')
             $rootScope.pageTitle = 'Home';
 
             var getCatalog = function (category, town, startingPage, pageSize) {
+                $rootScope.loading = true;
 
                 var cat = category || '',
                     t = town || '',
@@ -17,6 +18,8 @@ angular.module('adsApp')
                     $scope.catalog = catalog;
                     $scope.pages = new Array(catalog.numPages);
                     $scope.currentPage = startingPage;
+                }).finally(function () {
+                    $rootScope.loading = false;
                 });
             };
 
@@ -30,16 +33,7 @@ angular.module('adsApp')
                 $scope.towns = towns;
             });
 
-            $scope.getActiveMenu = function (path) {
-                if ($location.path().substr(0, path.length) == path) {
-                    return 'active'
-                } else {
-                    return ''
-                }
-            };
 
-            $scope.app = config.app;
-            $scope.author = config.author;
         }
     ]
 );

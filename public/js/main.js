@@ -1,14 +1,9 @@
 'use strict';
 
 (function () {
-
     // Page preloader
-    var preloader = document.createElement('div'),
-        spinner = document.createElement('span');
+    var preloader = document.createElement('div');
     preloader.id = 'preloader';
-    spinner.className = 'spinner';
-    preloader.appendChild(spinner);
-
     document.body.appendChild(preloader);
 
     setTimeout(function () {
@@ -25,6 +20,7 @@
         }, 10);
 
     }, 150);
+
 
     // target _blank to all external links
     var links = document.getElementsByTagName('a');
