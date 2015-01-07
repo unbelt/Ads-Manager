@@ -1,39 +1,53 @@
 'use strict';
 
-angular.module('adsApp')
-    .controller('HomeController', ['$scope', '$rootScope', '$location', 'config', 'catalog',
-        function ($scope, $rootScope, $location, config, catalog) {
+angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog',
+    function ($scope, $rootScope, catalog) {
 
-            $rootScope.pageTitle = 'Home';
+        $rootScope.pageTitle = 'Home';
 
-            var getCatalog = function (category, town, startingPage, pageSize) {
-                $rootScope.loading = true;
+        var adsParams = {
+            'startPage': 1,
+            'pageSize': 2,
+            'categoryId': '',
+            'townId': ''
+        };
 
-                var cat = category || '',
-                    t = town || '',
-                    page = startingPage || 1,
-                    ads = pageSize || 2;
+        $scope.adsParams = adsParams;
 
-                catalog.getCatalog(cat, t, page, ads).then(function (catalog) {
-                    $scope.catalog = catalog;
-                    $scope.pages = new Array(catalog.numPages);
-                    $scope.currentPage = startingPage;
-                }).finally(function () {
-                    $rootScope.loading = false;
-                });
-            };
+        $scope.getCatalog = function () {
+            $rootScope.loading = true;
 
-            $scope.getCatalog = getCatalog;
-            getCatalog();
-
-            catalog.getAll('categories').then(function (categories) {
-                $scope.categories = categories;
+            catalog.getCatalog(adsParams).then(function (catalog) {
+                $scope.catalog = catalog;
+                $scope.pages = new Array(catalog.numPages);
+            }).finally(function () {
+                $rootScope.loading = false;
             });
-            catalog.getAll('towns').then(function (towns) {
-                $scope.towns = towns;
-            });
+        };
+        $scope.getCatalog();
 
+        $scope.changePage = function (page) {
+            if (page < 1) {
+                page = 1;
+            }
+            else if (page > $scope.pages.length) {
+                page = $scope.pages.length;
+            }
 
-        }
-    ]
-);
+            adsParams.startPage = page;
+            $scope.getCatalog();
+        };
+
+        $scope.$on('categoryChanged', function (event, selectedCategory) {
+            adsParams.categoryId = selectedCategory;
+            adsParams.startPage = 1;
+            $scope.getCatalog();
+        });
+
+        $scope.$on('townChanged', function (event, selectedTown) {
+            adsParams.townId = selectedTown;
+            adsParams.startPage = 1;
+            $scope.getCatalog();
+        });
+    }
+]);

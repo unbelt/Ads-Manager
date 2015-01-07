@@ -208,8 +208,8 @@ input, select {
     height: 100%
 }
 .container {
-    float: right;
-    width: 80%;
+    display: inline-block;
+    width: 55%;
 }
 
 #header, #footer, .box, .pagination ul li {
@@ -236,7 +236,6 @@ input, select {
 /* Menu Boxes */
 .menu {
     width: 20%;
-    clear: both;
 }
 .box {
     margin: 20px;
@@ -251,9 +250,13 @@ input, select {
     color: #000000;
 }
 
-.box > nav > ul li a:hover {
+.box > nav > ul li a:hover, .button:hover {
     border: 1px solid #7f6000;
     cursor: pointer;
+}
+
+.box.big {
+    width: 200%;
 }
 
 .pagination {
@@ -268,19 +271,17 @@ input, select {
     border: 1px solid #507e32;
 }
 
-.pagination ul li:hover {
+.pagination ul li:hover, .pagination ul li.active {
     color: #ffffff;
     background-color: #548235;
 }
 
 /* Advertising Box */
 .ad {
-    width: 70%;
+    min-width: 100%;
     display: inline-block;
 }
-
 .ad header time {
-    float: right;
     font-style: italic;
 }
 
@@ -288,17 +289,8 @@ input, select {
     text-align: left;
 }
 
-.ad p {
-    float: right;
-    width: 80%;
-}
-
-.ad p span {
-    width: 89%;
-}
-
 .ad span {
-    width: 78%;
+    width: 85%;
     float: right;
     padding: 10px;
     margin: 5px;
@@ -307,26 +299,33 @@ input, select {
     border: 1px solid #649b3f;
 }
 
-.ad figure {
+.ad figure, .image-box {
+    clear: both;
+    display: inline-block;
     width: 150px;
     min-height: 170px;
-    float: left;
     padding: 10px;
     background-color: #e2f0d9;
     border: 1px solid #649b3f;
 }
 
+.ad-info {
+    width: 75%;
+    float: right;
+}
+
+.ad-info > div {
+    display: inline-block;
+    width: 100%;
+}
 
 /* Form Box */
 .form {
-    margin: 70px auto;
-    width: 50%;
     border-radius: 10px;
 }
 
 .form input[type=submit] {
     display: inline-block;
-    width: 20%;
     color: #ffffff;
 }
 
@@ -344,25 +343,32 @@ input, select {
 
 /* Publish Ad Box */
 
-/* My Ads Box */
-.my  {
-    width: 77%;
+/* User Ads Box */
+.user-ads {
+    width: 130%;
 }
-.my span, .my p {
-    width: 72%;
+
+.user-ads figure {
+    float: left;
 }
-.my p span {
-    width: 85%;
+
+.user-ads .ad-info {
+    width: 60%;
+    padding-left: 20px;
+    float: none;
+    display: inline-block;
 }
-.status {
+.user-ads .status {
     text-align: center;
     padding-left: 20px;
     width: 200px;
-    height: 270px;
     float: right;
     border-left: 1px solid #507e32;
 }
 
+.user-ads .button {
+    width: 140px;
+}
 
 /* Profile Box */
 .profile {

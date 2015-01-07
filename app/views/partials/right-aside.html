@@ -1,0 +1,39 @@
+<section class="box">
+    <header>
+        <h2>Categories</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li ng-class="{'active' : selectedCategory == null}"
+                ng-click="categoryClicked(null)">
+                <a href="">All</a>
+            </li>
+            <li ng-class="{'active' : selectedCategory == category.id}"
+                ng-click="categoryClicked(category.id)"
+                ng-repeat="category in categories">
+                <a href="">{{ category.name }}</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<section class="box">
+    <header>
+        <h2>Towns</h2>
+    </header>
+
+    <nav>
+        <ul>
+            <li ng-class="{'active' : selectedTown == null}"
+                ng-click="townClicked(null)">
+                <a href="">All</a>
+            </li>
+            <li ng-class="{'active' : selectedTown == town.id}"
+                ng-click="townClicked(town.id)"
+                ng-repeat="town in towns">
+                <a href="">{{ town.name }}</a>
+            </li>
+        </ul>
+    </nav>
+</section>

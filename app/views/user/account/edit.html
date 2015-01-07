@@ -15,7 +15,7 @@
 
         <label for="townId">Town:</label>
         <select id="townId">
-            <option ng-repeat="town in towns" value="{{ town.id }}">{{ town.name }}</option>
+            <option ng-repeat="town in towns" value="{{ town.id }}" ng-selected="town.id == user.townId">{{ town.name }}</option>
         </select>
 
         <input type="submit" class="button" value="Update" ng-click="editAccount()"/>

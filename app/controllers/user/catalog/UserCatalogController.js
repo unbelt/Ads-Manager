@@ -6,6 +6,8 @@ angular.module('adsApp')
             $rootScope.pageTitle = 'My Ads';
 
             var getUserCatalog = function (status, startingPage, pageSize) {
+                $rootScope.loading = true;
+
                 status = status || '';
                 startingPage = startingPage || 1;
                 pageSize = pageSize || 5;
@@ -14,12 +16,13 @@ angular.module('adsApp')
                     $scope.userCatalog = catalog;
                     $scope.pages = new Array(catalog.numPages);
                     $scope.currentPage = startingPage;
+                }).finally(function () {
+                    $rootScope.loading = false;
                 });
             };
             getUserCatalog();
 
             $scope.changeAdStatus = function (id, status) {
-
                 if (status) {
                     status = 'publishAgain'
                 } else {

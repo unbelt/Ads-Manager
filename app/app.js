@@ -5,7 +5,8 @@ angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
         app: {
             name: 'Ads',
             title: 'Ads Manager',
-            api: 'http://softuni-ads.azurewebsites.net/api/'
+            api: 'http://localhost:1337/api/'
+            //api: 'http://softuni-ads.azurewebsites.net/api/'
         },
         author: {
             name: 'Flyer',

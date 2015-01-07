@@ -17,7 +17,7 @@ angular.module('adsApp')
                     });
                 }
                 else {
-                    console.log('Username and password are required fields!');
+                    $rootScope.message = 'Username and password are required fields!';
                 }
             }
         }

@@ -17,9 +17,16 @@
     <div messenger></div>
     <div class="spinner" ng-show="loading"></div>
 
-    <aside class="menu pull-left" ng-include="'../app/views/partials/aside.html'"></aside>
+    <aside class="menu pull-left" ng-include="'../app/views/partials/left-aside.html'"></aside>
 
-    <section class="container" ng-view ng-class="{'loading': loading}"></section>
+    <section class="container" ng-class="{'loading': loading}" ng-view></section>
+
+    <aside class="menu pull-right"
+           ng-controller="SidebarController"
+           ng-class="{'loading': loading}"
+           ng-include="'../app/views/partials/right-aside.html'"
+           ng-show="pageTitle == 'Home'">
+    </aside>
 </main>
 
 <footer id="footer" ng-include="'../app/views/partials/footer.html'"></footer>
@@ -40,6 +47,7 @@
 
 <script src="../app/controllers/AppController.js"></script>
 <script src="../app/controllers/HomeController.js"></script>
+<script src="../app/controllers/SidebarController.js"></script>
 
 <script src="../app/controllers/user/account/LoginController.js"></script>
 <script src="../app/controllers/user/account/RegisterController.js"></script>

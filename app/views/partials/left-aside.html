@@ -18,9 +18,11 @@
         <ul>
             <li><a href="#/home" ng-class="getActiveMenu('/home')">Home</a></li>
             <li ng-show="auth.isAuthenticated()"><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">My Ads</a></li>
-            <li ng-show="auth.isAuthenticated()"><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Publish New Ad</a>
+            <li ng-show="auth.isAuthenticated()"><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Publish
+                New Ad</a>
             </li>
-            <li ng-show="auth.isAuthenticated()"><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Edit Profile</a>
+            <li ng-show="auth.isAuthenticated()"><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Edit
+                Profile</a>
             </li>
         </ul>
     </nav>
@@ -32,10 +34,11 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#/home" ng-class="getActiveMenu('/home')">All</a></li>
-            <li><a href="#/my-ads" ng-class="getActiveMenu('/my-ads')">Published</a></li>
-            <li><a href="#/create-ad" ng-class="getActiveMenu('/create-ad')">Waiting Approval</a></li>
-            <li><a href="#/edit-profile" ng-class="getActiveMenu('/edit-profile')">Inactive</a></li>
+            <li><a href="" ng-click="getUserCatalog('')">All</a></li>
+            <li><a href="" ng-click="getUserCatalog(3)">Published</a></li>
+            <li><a href="" ng-click="getUserCatalog(2)">Published</a></li>
+            <li><a href="" ng-click="getUserCatalog(1)">Waiting Approval</a></li>
+            <li><a href="" ng-click="getUserCatalog(0)">Inactive</a></li>
         </ul>
     </nav>
 </section>

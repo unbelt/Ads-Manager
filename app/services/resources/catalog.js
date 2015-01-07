@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('catalog', ['$resource', '$http', '$q', '$rootScope', 'config', 'authorization',
-        function ($resource, $http, $q, $rootScope, config, authorization) {
+    .factory('catalog', ['$http', '$q', '$rootScope', 'config', 'authorization',
+        function ($http, $q, $rootScope, config, authorization) {
             return {
                 getAll: function (resource) {
                     var deferred = $q.defer();
@@ -17,14 +17,14 @@ angular.module('adsApp')
 
                     return deferred.promise;
                 },
-                getCatalog: function (categoryId, townId, startPage, pageSize) {
+                getCatalog: function (adsParams) {
                     var deferred = $q.defer();
 
                     $http.get(config.app.api +
-                        'ads?categoryId=' + categoryId +
-                        '&townId=' + townId +
-                        '&startPage=' + startPage +
-                        '&pageSize=' + pageSize
+                        'ads?categoryId=' + adsParams.categoryId +
+                        '&townId=' + adsParams.townId +
+                        '&startPage=' + adsParams.startPage +
+                        '&pageSize=' + adsParams.pageSize
                     )
                         .success(function (response) {
                             deferred.resolve(response);
@@ -47,7 +47,8 @@ angular.module('adsApp')
                     )
                         .success(function (response) {
                             deferred.resolve(response);
-                        }, function () {
+                        })
+                        .error(function () {
                             $rootScope.message = 'User advertisements failed to load!';
                         });
 
