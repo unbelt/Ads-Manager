@@ -346,17 +346,12 @@ input, select, textarea {
 }
 
 /* Edit Form */
-.edit {
-    display: inline-block;
-    margin: 0 auto;
-}
-.edit form {
+.edit, .edit form {
     display: inline-block;
 }
 .edit form div {
     width: auto;
 }
-
 
 /* User Ads Box */
 .user-ads {
