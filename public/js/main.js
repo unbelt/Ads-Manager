@@ -3,24 +3,19 @@
 (function () {
     // Page preloader
     var preloader = document.createElement('div');
-    preloader.id = 'preloader';
+    preloader.setAttribute('style', 'opacity: 1; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #fff; z-index: 99;');
     document.body.appendChild(preloader);
 
     setTimeout(function () {
-        preloader = document.getElementById('preloader');
-        preloader.style.opacity = 1;
-
-        var refreshIntervalId = setInterval(function () {
+        var interval = setInterval(function () {
             preloader.style.opacity -= 0.03;
             if (preloader.style.opacity < 0) {
-                clearInterval(refreshIntervalId);
-                preloader.removeAttribute('style');
-                preloader.className = 'hide';
+                clearInterval(interval);
+                preloader.remove();
             }
         }, 10);
 
     }, 150);
-
 
     // target _blank to all external links
     var links = document.getElementsByTagName('a');

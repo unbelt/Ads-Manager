@@ -14,16 +14,7 @@ angular.module('adsApp')
                 $scope.user = user;
             });
 
-            $scope.editAccount = function () {
-                var editForm = angular.element(window.document)[0].editAccountForm;
-
-                var user = {
-                    name: editForm.name.value,
-                    email: editForm.email.value,
-                    phoneNumber: editForm.phoneNumber.value,
-                    townId: editForm.townId.value
-                };
-
+            $scope.editAccount = function (user) {
                 auth.editUserProfile(user);
             };
 

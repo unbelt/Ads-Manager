@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('auth', ['$http', '$q', '$rootScope', 'identity', 'authorization', 'config',
-        function ($http, $q, $rootScope, identity, authorization, config) {
+    .factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', 'notify',
+        function ($http, $q, identity, authorization, config, notify) {
             var usersApi = config.app.api + 'user/';
+            var headers = authorization.getAuthorizationHeader();
 
             return {
                 register: function (user) {
@@ -12,10 +13,10 @@ angular.module('adsApp')
                     $http.post(usersApi + 'register', user)
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'User account created.';
+                            notify.message('User account created.');
                         })
                         .error(function () {
-                            $rootScope.message = 'Registration failed! Please sign up all fields!';
+                            notify.message('Registration failed! Please sign up all fields!');
                         });
 
                     return deferred.promise;
@@ -35,52 +36,49 @@ angular.module('adsApp')
                             }
                         })
                         .error(function () {
-                            $rootScope.message = 'Invalid login!';
+                            notify.message('Invalid login!');
                         });
 
                     return deferred.promise;
                 },
                 logout: function () {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.post(usersApi + 'logout', {}, {headers: headers})
                         .success(function () {
                             identity.setCurrentUser(undefined);
                             deferred.resolve(true);
-                            $rootScope.message = 'You have logged out successfully.';
+                            notify.message('You have logged out successfully.');
                         })
                         .error(function () {
-                            $rootScope.message = 'Logout failed! Please try again!';
+                            notify.message('Logout failed! Please try again!');
                         });
 
                     return deferred.promise;
                 },
                 getUserProfile: function () {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.get(usersApi + 'profile', {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
                         })
                         .error(function () {
-                            $rootScope.message = 'Cannot load user profile!';
+                            notify.message('Cannot load user profile!');
                         });
 
                     return deferred.promise;
                 },
                 editUserProfile: function (user) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(usersApi + 'profile', user, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'User profile successfully updated.';
+                            notify.message('User profile successfully updated.');
                         })
                         .error(function () {
-                            $rootScope.message = 'User profile failed to update!';
+                            notify.message('User profile failed to update!');
                         });
 
                     return deferred.promise;
@@ -88,15 +86,14 @@ angular.module('adsApp')
                 },
                 editUserPassword: function (user) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(usersApi + '/ChangePassword', user, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'User password successfully updated.';
+                            notify.message('User password successfully updated.');
                         })
                         .error(function () {
-                            $rootScope.message = 'User password failed to change!';
+                            notify.message('User password failed to change!');
                         });
 
                     return deferred.promise;

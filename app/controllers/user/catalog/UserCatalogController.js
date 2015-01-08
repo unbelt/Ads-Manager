@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('UserCatalogController', ['$scope', '$rootScope', 'catalog',
-        function ($scope, $rootScope, catalog) {
+    .controller('UserCatalogController', ['$scope', '$rootScope', '$location', 'catalog',
+        function ($scope, $rootScope, $location, catalog) {
             $rootScope.pageTitle = 'My Ads';
 
             var adsParams = {
@@ -12,6 +12,14 @@ angular.module('adsApp')
             };
 
             $scope.adsParams = adsParams;
+
+            catalog.getAll('categories').then(function (categories) {
+                $scope.categories = categories;
+            });
+
+            catalog.getAll('towns').then(function (towns) {
+                $scope.towns = towns;
+            });
 
             $scope.getUserCatalog = function () {
                 $rootScope.loading = true;
@@ -51,6 +59,25 @@ angular.module('adsApp')
                 }
 
                 catalog.changeAdStatus(id, status).then(function () {
+                    $scope.getUserCatalog();
+                });
+            };
+
+            $scope.adClicked = function (adId, action) {
+                catalog.getAll('user/ads/' + adId).then(function (ad) {
+                    $rootScope.ad = ad;
+                    $rootScope.pageTitle = action + ' Ad';
+                });
+            };
+
+            $scope.editAd = function (ad) {
+                ad.changeImage = true;
+                catalog.editAd(ad.id, ad);
+            };
+
+            $scope.deleteAd = function (adId) {
+                catalog.deleteAd(adId).then(function () {
+                    $location.path('/my-ads');
                     $scope.getUserCatalog();
                 });
             }

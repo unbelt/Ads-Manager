@@ -86,17 +86,6 @@ input, select {
     display: none !important;
 }
 
-/* Preloader */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    z-index: 99;
-}
-
 /* Spinner */
 @-webkit-keyframes spin {
     100% {
@@ -138,11 +127,11 @@ body {
 }
 
 h1 { font-size: 1.6em;}
-h2 {font-size: 1.3em;}
-h3 {font-size: 1em;}
-h4 {font-size: 0.7em;}
-h5 {font-size: 0.6em;}
-h6 {font-size: 0.5em;}
+h2 {font-size: 1.4em;}
+h3 {font-size: 1.2em;}
+h4 {font-size: 1em;}
+h5 {font-size: 0.8em;}
+h6 {font-size: 0.6em;}
 a {text-decoration: none;}
 
 img {
@@ -150,7 +139,7 @@ img {
     height: 100%;
 }
 
-input, select {
+input, select, textarea {
     width: 95%;
     margin: 10px 0;
     padding: 8px;
@@ -176,6 +165,7 @@ input, select {
 }
 
 .message {
+    display: none;
     margin: 0 auto;
     text-align: center;
     width: 50%;
@@ -285,6 +275,7 @@ input, select {
     display: inline-block;
 }
 .ad header time {
+    float: right;
     font-style: italic;
 }
 
@@ -331,6 +322,11 @@ input, select {
     display: inline-block;
     color: #ffffff;
 }
+.form input[type=file] {
+    width: 120px;
+    display: block;
+    font-size: 1em;
+}
 
 .form a {
     float: right;
@@ -338,13 +334,29 @@ input, select {
 }
 
 /* Login / Register Box */
- .form div {
+.form div {
     width: 47%;
     margin-right: 15px;
     display: inline-block;
 }
 
-/* Publish Ad Box */
+.form .buttons {
+    display: block;
+    clear: both;
+}
+
+/* Edit Form */
+.edit {
+    display: inline-block;
+    margin: 0 auto;
+}
+.edit form {
+    display: inline-block;
+}
+.edit form div {
+    width: auto;
+}
+
 
 /* User Ads Box */
 .user-ads {

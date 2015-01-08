@@ -1,18 +1,21 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('catalog', ['$http', '$q', '$rootScope', 'config', 'authorization',
-        function ($http, $q, $rootScope, config, authorization) {
+    .factory('catalog', ['$http', '$q', 'config', 'authorization', 'notify',
+        function ($http, $q, config, authorization, notify) {
+
+            var headers = authorization.getAuthorizationHeader();
+
             return {
                 getAll: function (resource) {
                     var deferred = $q.defer();
 
-                    $http.get(config.app.api + resource)
+                    $http.get(config.app.api + resource, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
                         })
                         .error(function () {
-                            $rootScope.message = resource + ' failed to load!';
+                            notify.message(resource + ' failed to load!');
                         });
 
                     return deferred.promise;
@@ -30,14 +33,13 @@ angular.module('adsApp')
                             deferred.resolve(response);
                         })
                         .error(function () {
-                            $rootScope.message = 'Advertisements failed to load!';
+                            notify.message('Advertisements failed to load!');
                         });
 
                     return deferred.promise;
                 },
                 getUserCatalog: function (adsParams) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.get(config.app.api +
                         'user/ads?status=' + adsParams.status +
@@ -49,67 +51,63 @@ angular.module('adsApp')
                             deferred.resolve(response);
                         })
                         .error(function () {
-                            $rootScope.message = 'User advertisements failed to load!';
+                            notify.message('User advertisements failed to load!');
                         });
 
                     return deferred.promise;
                 },
                 createAd: function (ad) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.post(config.app.api + 'user/ads', ad, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'Advertisement submitted for approval. Once approved, it will be published.';
+                            notify.message('Advertisement submitted for approval. Once approved, it will be published.');
                         })
                         .error(function () {
-                            $rootScope.message = 'Advertisement failed to submit!';
+                            notify.message('Advertisement failed to submit!');
                         });
 
                     return deferred.promise;
                 },
                 changeAdStatus: function (id, status) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(config.app.api + 'user/ads/' + status + '/' + id, {}, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'Your advertisement now is ' + status;
+                            notify.message('Your advertisement now is ' + status);
                         })
                         .error(function () {
-                            $rootScope.message = 'Error changing the status of your advertisement!';
+                            notify.message('Error changing the status of your advertisement!');
                         });
 
                     return deferred.promise;
                 },
                 editAd: function (id, ad) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(config.app.api + 'user/ads/' + id, ad, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'Advertisement edited. Don\'t forget to submit it for publishing.';
+                            notify.message('Advertisement edited. Don\'t forget to submit it for publishing.');
                         })
                         .error(function () {
-                            $rootScope.message = 'Advertisement failed to edited!';
+                            notify.message('Advertisement failed to edited!');
                         });
 
                     return deferred.promise;
                 },
                 deleteAd: function (id) {
                     var deferred = $q.defer();
-                    var headers = authorization.getAuthorizationHeader();
 
-                    $http(config.app.api + 'user/ads' + id, {}, {headers: headers})
+                    $http.delete(config.app.api + 'user/ads/' + id, {headers: headers})
                         .success(function (response) {
                             deferred.resolve(response);
-                            $rootScope.message = 'Advertisement deleted successfully!';
+                            notify.message('Advertisement deleted successfully!');
                         })
                         .error(function () {
-                            $rootScope.message = 'Advertisement failed to delete!';
+                            notify.message('Advertisement failed to delete!');
                         });
 
                     return deferred.promise;

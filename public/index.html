@@ -14,8 +14,8 @@
 <header id="header" ng-include="'../app/views/partials/header.html'"></header>
 
 <main id="wrap">
-    <div messenger></div>
     <div class="spinner" ng-show="loading"></div>
+    <div class="message"></div>
 
     <aside class="menu pull-left"
            ng-include="'../app/views/partials/left-aside.html'"
@@ -35,27 +35,37 @@
 <footer id="footer" ng-include="'../app/views/partials/footer.html'"></footer>
 
 <script src="../public/js/main.js"></script>
+
+<!-- Libs -->
 <script src="../public/vendor/angular/angular.js"></script>
 <script src="../public/vendor/angular-resource/angular-resource.js"></script>
 <script src="../public/vendor/angular-route/angular-route.js"></script>
 <script src="../public/vendor/angular-cookies/angular-cookies.js"></script>
 
+<!-- App -->
 <script src="../app/app.js"></script>
-<script src="../app/directives/messenger.js"></script>
 
+<!-- Directives -->
+<script src="../app/directives/fileread.js"></script>
+
+<!-- Services -->
+<script src="../app/services/notify.js"></script>
 <script src="../app/services/resources/catalog.js"></script>
 <script src="../app/services/account/auth.js"></script>
 <script src="../app/services/account/authorization.js"></script>
 <script src="../app/services/account/identity.js"></script>
 
+<!-- Site controllers -->
 <script src="../app/controllers/AppController.js"></script>
 <script src="../app/controllers/HomeController.js"></script>
 <script src="../app/controllers/SidebarController.js"></script>
 
+<!-- User Account controllers -->
 <script src="../app/controllers/user/account/LoginController.js"></script>
 <script src="../app/controllers/user/account/RegisterController.js"></script>
 <script src="../app/controllers/user/account/EditAccountController.js"></script>
 
+<!-- User Catalog controllers -->
 <script src="../app/controllers/user/catalog/UserCatalogController.js"></script>
 <script src="../app/controllers/user/catalog/CreateAdController.js"></script>
 
