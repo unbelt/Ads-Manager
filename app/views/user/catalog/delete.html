@@ -1,0 +1,25 @@
+<section class="ad box">
+    <header>
+        <h2>Confirm Deleting Ad?</h2>
+    </header>
+
+    <section>
+        <header>
+            <time datetime="{{ ad.date | date : 'd-MMM-yyyy' }}">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
+            <h3>{{ ad.title }}</h3>
+        </header>
+        <figure>
+            <img src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
+        </figure>
+
+        <div class="ad-info">
+            <span>{{ ad.text }}</span>
+
+            <div>Category: <span>{{ ad.categoryName }}</span></div>
+            <div>Town: <span>{{ ad.townName }}</span></div>
+        </div>
+    </section>
+
+    <input type="button" class="button" value="Delete" ng-click="deleteAd(ad.id)"/>
+    <a href="#/my-ads" class="button pull-right">Cancel</a>
+</section>
