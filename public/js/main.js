@@ -11,7 +11,7 @@
             preloader.style.opacity -= 0.03;
             if (preloader.style.opacity < 0) {
                 clearInterval(interval);
-                preloader.remove();
+                preloader.className = 'hide';
             }
         }, 10);
 

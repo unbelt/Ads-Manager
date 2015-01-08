@@ -4,7 +4,6 @@ angular.module('adsApp')
     .factory('auth', ['$http', '$q', 'identity', 'authorization', 'config', 'notify',
         function ($http, $q, identity, authorization, config, notify) {
             var usersApi = config.app.api + 'user/';
-            var headers = authorization.getAuthorizationHeader();
 
             return {
                 register: function (user) {
@@ -25,9 +24,13 @@ angular.module('adsApp')
                     var deferred = $q.defer();
 
                     user['grant_type'] = 'password';
-                    $http.post(usersApi + 'login', 'username=' + user.username + '&password=' + user.password + '&grant_type=password', {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                    $http.post(usersApi + 'login',
+                        'username=' + user.username +
+                        '&password=' + user.password +
+                        '&grant_type=password',
+                        {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                         .success(function (response) {
-                            if (response["access_token"]) {
+                            if (response['access_token']) {
                                 identity.setCurrentUser(response);
                                 deferred.resolve(true);
                             }
@@ -43,6 +46,7 @@ angular.module('adsApp')
                 },
                 logout: function () {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.post(usersApi + 'logout', {}, {headers: headers})
                         .success(function () {
@@ -58,6 +62,7 @@ angular.module('adsApp')
                 },
                 getUserProfile: function () {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.get(usersApi + 'profile', {headers: headers})
                         .success(function (response) {
@@ -71,6 +76,7 @@ angular.module('adsApp')
                 },
                 editUserProfile: function (user) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(usersApi + 'profile', user, {headers: headers})
                         .success(function (response) {
@@ -86,6 +92,7 @@ angular.module('adsApp')
                 },
                 editUserPassword: function (user) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(usersApi + '/ChangePassword', user, {headers: headers})
                         .success(function (response) {

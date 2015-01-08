@@ -4,11 +4,10 @@ angular.module('adsApp')
     .factory('catalog', ['$http', '$q', 'config', 'authorization', 'notify',
         function ($http, $q, config, authorization, notify) {
 
-            var headers = authorization.getAuthorizationHeader();
-
             return {
                 getAll: function (resource) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.get(config.app.api + resource, {headers: headers})
                         .success(function (response) {
@@ -40,6 +39,9 @@ angular.module('adsApp')
                 },
                 getUserCatalog: function (adsParams) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
+
+                    console.log(headers);
 
                     $http.get(config.app.api +
                         'user/ads?status=' + adsParams.status +
@@ -58,6 +60,7 @@ angular.module('adsApp')
                 },
                 createAd: function (ad) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.post(config.app.api + 'user/ads', ad, {headers: headers})
                         .success(function (response) {
@@ -72,6 +75,7 @@ angular.module('adsApp')
                 },
                 changeAdStatus: function (id, status) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(config.app.api + 'user/ads/' + status + '/' + id, {}, {headers: headers})
                         .success(function (response) {
@@ -86,6 +90,7 @@ angular.module('adsApp')
                 },
                 editAd: function (id, ad) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.put(config.app.api + 'user/ads/' + id, ad, {headers: headers})
                         .success(function (response) {
@@ -100,6 +105,7 @@ angular.module('adsApp')
                 },
                 deleteAd: function (id) {
                     var deferred = $q.defer();
+                    var headers = authorization.getAuthorizationHeader();
 
                     $http.delete(config.app.api + 'user/ads/' + id, {headers: headers})
                         .success(function (response) {
