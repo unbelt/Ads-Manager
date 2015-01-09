@@ -8,8 +8,6 @@ angular.module('adsApp')
                     return {
                         'Authorization': 'Bearer ' + identity.getCurrentUser()['access_token']
                     }
-                } else {
-                    return null;
                 }
             }
         }

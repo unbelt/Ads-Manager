@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
+angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
     .constant('config', {
         app: {
             name: 'Ads',
@@ -48,7 +48,13 @@ angular.module('adsApp', ['ngRoute', 'ngResource', 'ngCookies'])
                 templateUrl: 'app/views/user/catalog/deleteAd.html',
                 controller: 'UserCatalogController'
             })
-             // *************************************************** Admin Area
+            .otherwise({redirectTo: '/home'});
+        // *************************************************** Admin Area
+        $routeProvider
+            .when('/admin/home', {
+                templateUrl: 'app/views/admin/catalog/showCatalog.html',
+                controller: 'AdminCatalogController'
+            })
             .otherwise({redirectTo: '/home'});
     }
 );

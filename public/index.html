@@ -36,11 +36,11 @@
 
 <script src="../public/js/main.js"></script>
 
-<!-- Libs -->
+<!-- Angular Modules -->
 <script src="../public/vendor/angular/angular.js"></script>
-<script src="../public/vendor/angular-resource/angular-resource.js"></script>
 <script src="../public/vendor/angular-route/angular-route.js"></script>
 <script src="../public/vendor/angular-cookies/angular-cookies.js"></script>
+<script src="../public/vendor/angular-resource/angular-resource.js"></script>
 
 <!-- App -->
 <script src="../app/app.js"></script>
@@ -50,6 +50,7 @@
 
 <!-- Services -->
 <script src="../app/services/notify.js"></script>
+<script src="../app/services/resources/resource.js"></script>
 <script src="../app/services/resources/catalog.js"></script>
 <script src="../app/services/account/auth.js"></script>
 <script src="../app/services/account/authorization.js"></script>
@@ -60,6 +61,7 @@
 <script src="../app/controllers/HomeController.js"></script>
 <script src="../app/controllers/SidebarController.js"></script>
 
+<!--------------------------------- USER AREA -->
 <!-- User Account controllers -->
 <script src="../app/controllers/user/account/LoginController.js"></script>
 <script src="../app/controllers/user/account/RegisterController.js"></script>
@@ -68,6 +70,18 @@
 <!-- User Catalog controllers -->
 <script src="../app/controllers/user/catalog/UserCatalogController.js"></script>
 <script src="../app/controllers/user/catalog/CreateAdController.js"></script>
+
+
+<!-------------------------------- ADMIN AREA -->
+
+<!-- Admin Services -->
+<script src="../app/services/resources/adminCatalog.js"></script>
+
+<!-- Admin Catalog controllers -->
+<script src="../app/controllers/admin/catalog/AdminCatalogController.js"></script>
+
+
+
 
 </body>
 </html>
