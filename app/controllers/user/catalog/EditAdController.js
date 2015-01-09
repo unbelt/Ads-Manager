@@ -17,7 +17,7 @@ angular.module('adsApp').controller('EditAdController', ['$scope', '$rootScope',
             $rootScope.loading = true;
 
             catalog.editAd(ad).then(function () {
-                $location.path('/my-ads');
+                $location.path('/user/ads');
                 notify.message('Advertisement edited. Don\'t forget to submit it for publishing.');
             }, function (error) {
                 notify.message('Advertisements failed to edit!', error);

@@ -28,23 +28,23 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
                 templateUrl: 'app/views/user/account/register.html',
                 controller: 'RegisterController'
             })
-            .when('/edit-profile', {
+            .when('/user/profile', {
                 templateUrl: 'app/views/user/account/editAccount.html',
                 controller: 'EditAccountController'
             })
-            .when('/my-ads', {
+            .when('/user/ads', {
                 templateUrl: 'app/views/user/catalog/showCatalog.html',
                 controller: 'CatalogController'
             })
-            .when('/create-ad', {
+            .when('/user/ads/publish', {
                 templateUrl: 'app/views/user/catalog/createAd.html',
                 controller: 'CreateAdController'
             })
-            .when('/edit-ad', {
+            .when('/user/ads/edit', {
                 templateUrl: 'app/views/user/catalog/editAd.html',
                 controller: 'EditAdController'
             })
-            .when('/delete-ad', {
+            .when('/user/ads/delete', {
                 templateUrl: 'app/views/user/catalog/deleteAd.html',
                 controller: 'DeleteAdController'
             })

@@ -23,9 +23,9 @@
                ng-hide="ad.status == 'Inactive'">Deactivate</a>
 
             <div ng-show="ad.status == 'Inactive'">
-                <a href="#/edit-ad" class="button" ng-click="editAdClicked(ad.id)">Edit</a>
+                <a href="#/user/ads/edit" class="button" ng-click="editAdClicked(ad.id)">Edit</a>
                 <a href="" class="button" ng-click="changeAdStatus(ad.id, adsStatus.activate)">Publish Again</a>
-                <a href="#/delete-ad" class="button" ng-click="deleteAdClicked(ad.id)">Delete</a>
+                <a href="#/user/ads/delete" class="button" ng-click="deleteAdClicked(ad.id)">Delete</a>
             </div>
         </section>
     </article>

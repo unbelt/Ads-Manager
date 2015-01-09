@@ -16,7 +16,7 @@ angular.module('adsApp').controller('DeleteAdController', ['$scope', '$rootScope
             $rootScope.loading = true;
 
             catalog.deleteAd(id).then(function () {
-                $location.path('/my-ads');
+                $location.path('/user/ads');
                 notify.message('Advertisement deleted successfully!');
             }, function (error) {
                 notify.message('Advertisement failed to delete!', error);

@@ -11,7 +11,7 @@ angular.module('adsApp')
                 $rootScope.loading = true;
 
                 catalog.createAd(ad).then(function () {
-                    $location.path('/my-ads');
+                    $location.path('/user/ads');
                     notify.message('Advertisement submitted for approval. Once approved, it will be published.');
                 }, function (error) {
                     notify.message('Advertisement failed to submit!', error);
