@@ -8,17 +8,13 @@ angular.module('adsApp')
             $scope.config = config;
 
             $scope.logout = function () {
-                $rootScope.loading = true;
-
                 account.logout().then(function () {
                     cookieStorage.setCurrentUser(undefined);
                     $location.path('/');
                     notify.message('Logout successful.');
                 }, function (error) {
                     notify.message('Logout failed!', error);
-                }).finally(function () {
-                    $rootScope.loading = false;
-                })
+                });
             };
 
             $scope.getActiveMenu = function (path) {
