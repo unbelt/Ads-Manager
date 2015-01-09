@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('account', ['resource', '$http', '$q', 'cookieStorage', 'authorization', 'config', 'notify',
-        function (resource, $http, $q, cookieStorage, authorization, config, notify) {
+    .factory('account', ['resource', 'cookieStorage',
+        function (resource, cookieStorage) {
             var user = 'user/',
                 login = user + 'login/',
                 register = user + 'register/',

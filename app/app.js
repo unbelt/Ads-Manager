@@ -18,15 +18,18 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         $routeProvider
             .when('/home', {
                 templateUrl: 'app/views/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                guestAccess: true
             })
             .when('/login', {
                 templateUrl: 'app/views/user/account/login.html',
-                controller: 'LoginController'
+                controller: 'LoginController',
+                allowGuest: true
             })
             .when('/register', {
                 templateUrl: 'app/views/user/account/register.html',
-                controller: 'RegisterController'
+                controller: 'RegisterController',
+                allowGuest: true
             })
             .when('/user/profile', {
                 templateUrl: 'app/views/user/account/editAccount.html',
@@ -54,7 +57,6 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
             .when('/admin/home', {
                 templateUrl: 'app/views/admin/catalog/showCatalog.html',
                 controller: 'AdminCatalogController'
-            })
-            .otherwise({redirectTo: '/home'});
+            });
     }
 );

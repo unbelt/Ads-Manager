@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('adsApp').controller('DeleteAdController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
-    function ($scope, $rootScope, $location, catalog, notify) {
+angular.module('adsApp').controller('DeleteAdController', ['$scope', '$rootScope', '$location', 'catalog', 'account', 'notify',
+    function ($scope, $rootScope, $location, catalog, account, notify) {
+
         $rootScope.pageTitle =  'Delete Ad';
 
         catalog.get('user/ads/' + $rootScope.deleteAdId).then(function (ad) {

@@ -2,6 +2,7 @@
 
 angular.module('adsApp').controller('EditAdController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
     function ($scope, $rootScope, $location, catalog, notify) {
+
         $rootScope.pageTitle = 'Edit Ad';
 
         catalog.get('user/ads/' + $rootScope.editAdId).then(function (ad) {

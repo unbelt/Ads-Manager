@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('AppController', ['$scope', '$location', 'account', 'config', 'cookieStorage', 'notify',
-        function ($scope, $location, account, config, cookieStorage, notify) {
+    .controller('AppController', ['$scope', '$rootScope', '$location', 'account', 'config', 'cookieStorage', 'notify',
+        function ($scope, $rootScope, $location, account, config, cookieStorage, notify) {
 
             $scope.account = account;
             $scope.config = config;
@@ -16,6 +16,21 @@ angular.module('adsApp')
                     notify.message('Logout failed!', error);
                 });
             };
+
+            $rootScope.$on('$routeChangeStart', function (event, next) {
+
+                if (!next.guestAccess) {
+                    if (account.isAuthenticated() && next.allowGuest) {
+                        notify.message('You are already logged in!');
+                        $location.path('/');
+                    }
+                    else if (!account.isAuthenticated() && !next.allowGuest) {
+                        notify.message('Please login for full access!');
+                        $rootScope.savedLocation = $location.url();
+                        $location.path('/login');
+                    }
+                }
+            });
         }
     ]
 );

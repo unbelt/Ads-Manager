@@ -12,7 +12,7 @@ angular.module('adsApp')
 
                     account.login(user).then(function (user) {
                         cookieStorage.setCurrentUser(user);
-                        $location.path('/');
+                        $location.path($rootScope.savedLocation || '/');
                     }, function (error) {
                         notify.message('Login failed!', error);
                     }).finally(function () {
