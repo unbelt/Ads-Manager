@@ -1,23 +1,25 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('LoginController', ['$scope', '$rootScope', '$location', 'identity', 'auth',
-        function ($scope, $rootScope, $location, identity, auth) {
+    .controller('LoginController', ['$scope', '$rootScope', '$location', 'cookieStorage', 'account', 'notify',
+        function ($scope, $rootScope, $location, cookieStorage, account, notify) {
 
             $rootScope.pageTitle = 'Login';
-            $scope.identity = identity;
 
             $scope.login = function (user, loginForm) {
                 if (loginForm.$valid) {
-                    auth.login(user).then(function (success) {
-                        if (success) {
-                            console.log('Successful login!');
-                            $location.path('/');
-                        }
+                    $rootScope.loading = true;
+
+                    account.login(user).then(function (user) {
+                        cookieStorage.setCurrentUser(user);
+                        $location.path('/');
+                    }, function (error) {
+                        notify.message('Login failed!', error);
+                    }).finally(function () {
+                        $rootScope.loading = false;
                     });
-                }
-                else {
-                    $rootScope.message = 'Username and password are required fields!';
+                } else {
+                    notify.message('Username and password are required fields!');
                 }
             }
         }

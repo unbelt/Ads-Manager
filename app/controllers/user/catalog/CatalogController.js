@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('UserCatalogController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
+    .controller('CatalogController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
         function ($scope, $rootScope, $location, catalog, notify) {
 
             $rootScope.pageTitle = 'My Ads';
@@ -25,7 +25,7 @@ angular.module('adsApp')
                     $scope.catalog = catalog;
                     $scope.pages = new Array(catalog.numPages);
                 }, function (error) {
-                    notify.message('User advertisements failed to load! ' + error);
+                    notify.message('User advertisements failed to load!', error);
                 }).finally(function () {
                     $rootScope.loading = false;
                 });
@@ -54,9 +54,9 @@ angular.module('adsApp')
             $scope.changeAdStatus = function (id, status) {
                 catalog.changeAdStatus(status + '/' + id).then(function () {
                     $scope.getUserCatalog();
-                    notify.message('Your advertisement is now ' + adsStatus[status]);
+                    notify.message('Your advertisement is now ' + status);
                 }, function (error) {
-                    notify.message('Changing advertisement status failed! ' + error.statusText);
+                    notify.message('Changing advertisement status failed!', error);
                 });
             };
 

@@ -21,7 +21,7 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
                 $scope.catalog = catalog;
                 $scope.pages = new Array(catalog.numPages);
             }, function (error) {
-                notify.message('Catalog filed to load! ' + error.statusText)
+                notify.message('Catalog filed to load!', error);
             }).finally(function () {
                 $rootScope.loading = false;
             });

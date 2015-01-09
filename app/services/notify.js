@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('adsApp').factory('notify', ['$timeout', function ($timeout) {
 
     var messageBox = angular.element(document.querySelector('.message')),

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('authorization', ['identity', function (identity) {
+    .factory('authorization', ['cookieStorage', function (cookieStorage) {
         return {
             getAuthorizationHeader: function () {
-                if(identity.getCurrentUser()) {
+                if(cookieStorage.getCurrentUser()) {
                     return {
-                        'Authorization': 'Bearer ' + identity.getCurrentUser()['access_token']
+                        'Authorization': 'Bearer ' + cookieStorage.getCurrentUser()['access_token']
                     }
                 }
             }

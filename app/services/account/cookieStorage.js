@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adsApp')
-    .factory('identity', ['$cookieStore', function ($cookieStore) {
+    .factory('cookieStorage', ['$cookieStore', function ($cookieStore) {
         var cookieStorageUserKey = 'currentApplicationUser';
         var currentUser;
 

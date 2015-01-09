@@ -14,13 +14,13 @@ angular.module('adsApp').controller('SidebarController', ['$scope', '$rootScope'
         catalog.getAll('categories').then(function (categories) {
             $scope.categories = categories;
         }, function (error) {
-            notify.message('Categories filed to load! ' + error.statusText)
+            notify.message('Categories filed to load!', error)
         });
 
         catalog.getAll('towns').then(function (towns) {
             $scope.towns = towns;
         }, function (error) {
-            notify.message('Towns filed to load! ' + error.statusText)
+            notify.message('Towns filed to load!', error)
         });
 
         $scope.categoryClicked = function (clickedCategory) {

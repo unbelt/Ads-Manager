@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('adsApp').controller('AdminCatalogController', ['$scope', '$rootScope', 'adminCatalog', 'notify',
     function ($scope, $rootScope, adminCatalog, notify) {
 
@@ -18,7 +20,7 @@ angular.module('adsApp').controller('AdminCatalogController', ['$scope', '$rootS
         adminCatalog.getAds(adsParams).then(function (catalog) {
             $scope.catalog = catalog;
         }, function (error) {
-            notify.message(error.statusText)
+            notify.message('Loading catalog failed!', error)
         }).finally(function () {
             $rootScope.loading = false;
         });

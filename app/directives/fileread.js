@@ -1,7 +1,9 @@
+'use strict';
+
 angular.module('adsApp').directive('fileread', [function () {
     return {
         scope: {
-            fileread: "="
+            fileread: '='
         },
         link: function (scope, element, attributes) {
             element.bind('change', function (changeEvent) {

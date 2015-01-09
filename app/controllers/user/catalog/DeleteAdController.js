@@ -7,7 +7,7 @@ angular.module('adsApp').controller('DeleteAdController', ['$scope', '$rootScope
         catalog.get('user/ads/' + $rootScope.deleteAdId).then(function (ad) {
             $scope.ad = ad;
         }, function (error) {
-            notify.message('Advertisement failed to load! ' + error.statusText);
+            notify.message('Advertisement failed to load!', error);
         }).finally(function () {
             $rootScope.loading = false;
         });
@@ -19,7 +19,7 @@ angular.module('adsApp').controller('DeleteAdController', ['$scope', '$rootScope
                 $location.path('/my-ads');
                 notify.message('Advertisement deleted successfully!');
             }, function (error) {
-                notify.message('Advertisement failed to delete! ' + error);
+                notify.message('Advertisement failed to delete!', error);
             }).finally(function () {
                 $rootScope.loading = false;
             });

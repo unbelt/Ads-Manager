@@ -3,7 +3,7 @@
         <h2>User Registration</h2>
     </header>
 
-    <form name="loginForm">
+    <form name="registerForm">
         <label for="username">Username:</label>
         <input type="text" id="username" placeholder="Username" required="required" ng-model="user.username"/>
 
@@ -34,7 +34,7 @@
                 <option value="" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
-        <input type="submit" class="button" value="Register" ng-click="register(user)"/>
+        <input type="submit" class="button" value="Register" ng-click="register(user, registerForm)"/>
         <a href="#/login"><abbr title="Login">Login here</abbr></a>
     </form>
 </section>

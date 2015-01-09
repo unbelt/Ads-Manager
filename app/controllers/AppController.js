@@ -1,23 +1,31 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('AppController', ['$scope', '$location', 'auth', 'config',
-        function ($scope, $location, auth, config) {
+    .controller('AppController', ['$scope', '$location', 'account', 'config', 'cookieStorage', 'notify',
+        function ($scope, $location, account, config, cookieStorage, notify) {
 
-            $scope.auth = auth;
+            $scope.account = account;
             $scope.config = config;
 
             $scope.logout = function () {
-                auth.logout().then(function () {
+                $rootScope.loading = true;
+
+                account.logout().then(function () {
+                    cookieStorage.setCurrentUser(undefined);
                     $location.path('/');
+                    notify.message('Logout successful.');
+                }, function (error) {
+                    notify.message('Logout failed!', error);
+                }).finally(function () {
+                    $rootScope.loading = false;
                 })
             };
 
             $scope.getActiveMenu = function (path) {
                 if ($location.path().substr(0, path.length) == path) {
-                    return 'active'
+                    return 'active';
                 } else {
-                    return ''
+                    return '';
                 }
             };
         }
