@@ -1,0 +1,21 @@
+<div ng-controller="SidebarController">
+    <label for="category">Category:</label>
+    <select id="category" ng-model="ad.categoryId">
+        <option value="null">(None)</option>
+        <option value="{{ category.id }}"
+                ng-repeat="category in categories"
+                ng-selected="ad.categoryId == category.id">
+            {{ category.name }}
+        </option>
+    </select>
+
+    <label for="town">Town:</label>
+    <select id="town" ng-model="ad.townId">
+        <option value="null">(None)</option>
+        <option value="{{ town.id }}"
+                ng-repeat="town in towns"
+                ng-selected="ad.townId == town.id">
+            {{ town.name }}
+        </option>
+    </select>
+</div>

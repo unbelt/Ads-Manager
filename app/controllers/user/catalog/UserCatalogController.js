@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('UserCatalogController', ['$scope', '$rootScope', '$location', 'catalog',
-        function ($scope, $rootScope, $location, catalog) {
+    .controller('UserCatalogController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
+        function ($scope, $rootScope, $location, catalog, notify) {
+
             $rootScope.pageTitle = 'My Ads';
 
             var adsParams = {
@@ -10,16 +11,12 @@ angular.module('adsApp')
                 'startPage': 1,
                 'pageSize': 2
             };
-
+            var adsStatus = {
+                activate: 'PublishAgain',
+                deactivate: 'Deactivate'
+            };
             $scope.adsParams = adsParams;
-
-            catalog.getAll('categories').then(function (categories) {
-                $scope.categories = categories;
-            });
-
-            catalog.getAll('towns').then(function (towns) {
-                $scope.towns = towns;
-            });
+            $scope.adsStatus = adsStatus;
 
             $scope.getUserCatalog = function () {
                 $rootScope.loading = true;
@@ -27,6 +24,8 @@ angular.module('adsApp')
                 catalog.getUserCatalog(adsParams).then(function (catalog) {
                     $scope.catalog = catalog;
                     $scope.pages = new Array(catalog.numPages);
+                }, function (error) {
+                    notify.message('User advertisements failed to load! ' + error);
                 }).finally(function () {
                     $rootScope.loading = false;
                 });
@@ -45,6 +44,7 @@ angular.module('adsApp')
                 $scope.getUserCatalog();
             };
 
+            // User ads filtering
             $scope.$on('statusChanged', function (event, selectedStatus) {
                 adsParams.status = selectedStatus;
                 adsParams.startPage = 1;
@@ -52,35 +52,23 @@ angular.module('adsApp')
             });
 
             $scope.changeAdStatus = function (id, status) {
-                if (status) {
-                    status = 'publishAgain'
-                } else {
-                    status = 'deactivate'
-                }
-
-                catalog.changeAdStatus(id, status).then(function () {
+                catalog.changeAdStatus(status + '/' + id).then(function () {
                     $scope.getUserCatalog();
+                    notify.message('Your advertisement is now ' + adsStatus[status]);
+                }, function (error) {
+                    notify.message('Changing advertisement status failed! ' + error.statusText);
                 });
             };
 
-            $scope.adClicked = function (adId, action) {
-                catalog.getAll('user/ads/' + adId).then(function (ad) {
-                    $rootScope.ad = ad;
-                    $rootScope.pageTitle = action + ' Ad';
-                });
+            $scope.editAdClicked = function (id) {
+                $rootScope.loading = true;
+                $rootScope.editAdId = id;
             };
 
-            $scope.editAd = function (ad) {
-                ad.changeImage = true;
-                catalog.editAd(ad.id, ad);
+            $scope.deleteAdClicked = function (id) {
+                $rootScope.loading = true;
+                $rootScope.deleteAdId = id;
             };
-
-            $scope.deleteAd = function (adId) {
-                catalog.deleteAd(adId).then(function () {
-                    $location.path('/my-ads');
-                    $scope.getUserCatalog();
-                });
-            }
         }
     ]
 );

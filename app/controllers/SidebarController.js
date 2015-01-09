@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('adsApp').controller('SidebarController', ['$scope', '$rootScope', 'catalog',
-    function ($scope, $rootScope, catalog) {
+angular.module('adsApp').controller('SidebarController', ['$scope', '$rootScope', 'catalog', 'notify',
+    function ($scope, $rootScope, catalog, notify) {
 
         $scope.adsStates = {
             'All': null,
@@ -13,10 +13,14 @@ angular.module('adsApp').controller('SidebarController', ['$scope', '$rootScope'
 
         catalog.getAll('categories').then(function (categories) {
             $scope.categories = categories;
+        }, function (error) {
+            notify.message('Categories filed to load! ' + error.statusText)
         });
 
         catalog.getAll('towns').then(function (towns) {
             $scope.towns = towns;
+        }, function (error) {
+            notify.message('Towns filed to load! ' + error.statusText)
         });
 
         $scope.categoryClicked = function (clickedCategory) {
@@ -30,6 +34,7 @@ angular.module('adsApp').controller('SidebarController', ['$scope', '$rootScope'
         };
 
         $scope.statusClicked = function (clickedStatus) {
+            $rootScope.loading = true;
             $scope.selectedStatus = clickedStatus;
             $rootScope.$broadcast('statusChanged', clickedStatus || '');
         }

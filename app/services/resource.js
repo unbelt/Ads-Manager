@@ -6,14 +6,24 @@ angular.module('adsApp').factory('resource', ['$resource', 'config', 'authorizat
             use: function (resource) {
                 var headers = authorization.getAuthorizationHeader();
 
-                return $resource(config.app.api + 'admin/' + resource, {},
+                return $resource(config.app.api + resource + '/:id', {id: '@id'},
                     {
+                        query: {
+                            method: 'GET',
+                            headers: headers,
+                            isArray: true
+                        },
                         get: {
                             method: 'GET',
+                            headers: headers,
+                            isArray: false
+                        },
+                        put: {
+                            method: 'PUT',
                             headers: headers
                         },
-                        update: {
-                            method: 'PUT',
+                        post: {
+                            method: 'POST',
                             headers: headers
                         },
                         delete: {

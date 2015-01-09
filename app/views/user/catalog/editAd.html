@@ -24,25 +24,8 @@
                       ng-model="ad.text">{{ ad.text }}
             </textarea>
 
-            <label for="category">Category:</label>
-            <select id="category" ng-model="ad.categoryId">
-                <option value="null">(None)</option>
-                <option value="{{ category.id }}"
-                        ng-repeat="category in categories"
-                        ng-selected="ad.categoryId == category.id">
-                    {{ category.name }}
-                </option>
-            </select>
+            <div ng-include="'../app/views/partials/selectOptions.html'"></div>
 
-            <label for="town">Town:</label>
-            <select id="town" ng-model="ad.townId">
-                <option value="null">(None)</option>
-                <option value="{{ town.id }}"
-                        ng-repeat="town in towns"
-                        ng-selected="ad.townId == town.id">
-                    {{ town.name }}
-                </option>
-            </select>
         </div>
 
         <div class="buttons">

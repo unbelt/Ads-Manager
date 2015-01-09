@@ -5,8 +5,8 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         app: {
             name: 'Ads',
             title: 'Ads Manager',
-            //api: 'http://localhost:1337/api/'
-            api: 'http://softuni-ads.azurewebsites.net/api/'
+            api: 'http://localhost:1337/api/'
+            //api: 'http://softuni-ads.azurewebsites.net/api/'
         },
         author: {
             name: 'Flyer',
@@ -42,11 +42,11 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
             })
             .when('/edit-ad', {
                 templateUrl: 'app/views/user/catalog/editAd.html',
-                controller: 'UserCatalogController'
+                controller: 'EditAdController'
             })
             .when('/delete-ad', {
                 templateUrl: 'app/views/user/catalog/deleteAd.html',
-                controller: 'UserCatalogController'
+                controller: 'DeleteAdController'
             })
             .otherwise({redirectTo: '/home'});
         // *************************************************** Admin Area

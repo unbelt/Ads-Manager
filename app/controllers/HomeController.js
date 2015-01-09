@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog',
-    function ($scope, $rootScope, catalog) {
+angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog', 'notify',
+    function ($scope, $rootScope, catalog, notify) {
 
         $rootScope.pageTitle = 'Home';
 
@@ -20,6 +20,8 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
             catalog.getCatalog(adsParams).then(function (catalog) {
                 $scope.catalog = catalog;
                 $scope.pages = new Array(catalog.numPages);
+            }, function (error) {
+                notify.message('Catalog filed to load! ' + error.statusText)
             }).finally(function () {
                 $rootScope.loading = false;
             });

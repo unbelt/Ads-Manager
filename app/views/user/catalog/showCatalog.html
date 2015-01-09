@@ -19,13 +19,13 @@
         <section class="status">
             <p>Status:</p>
             <span>{{ ad.status }}</span>
-            <a href="" class="button" ng-click="changeAdStatus(ad.id, false)"
+            <a href="" class="button" ng-click="changeAdStatus(ad.id, adsStatus.deactivate)"
                ng-hide="ad.status == 'Inactive'">Deactivate</a>
 
             <div ng-show="ad.status == 'Inactive'">
-                <a href="#/edit-ad" class="button" ng-click="adClicked(ad.id, 'Edit')">Edit</a>
-                <a href="" class="button" ng-click="changeAdStatus(ad.id, true)">Publish Again</a>
-                <a href="#/delete-ad" class="button" ng-click="adClicked(ad.id, 'Delete')">Delete</a>
+                <a href="#/edit-ad" class="button" ng-click="editAdClicked(ad.id)">Edit</a>
+                <a href="" class="button" ng-click="changeAdStatus(ad.id, adsStatus.activate)">Publish Again</a>
+                <a href="#/delete-ad" class="button" ng-click="deleteAdClicked(ad.id)">Delete</a>
             </div>
         </section>
     </article>
