@@ -5,7 +5,6 @@ angular.module('adsApp')
         function ($scope, $rootScope, account, catalog, notify) {
 
             $rootScope.pageTitle = 'Edit User Profile';
-            $rootScope.loading = true;
 
             account.getUserProfile().then(function (user) {
                 $scope.user = user;
@@ -17,8 +16,6 @@ angular.module('adsApp')
                 $scope.towns = towns;
             }, function (error) {
                 console.log('Loading towns failed!', error);
-            }).finally(function () {
-                $rootScope.loading = false;
             });
 
             $scope.editAccount = function (user) {
