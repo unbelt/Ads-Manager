@@ -161,11 +161,12 @@ img {
 
 input, select, textarea {
     font-size: 1em;
-    max-width: 95%;
+    width: 85%;
     margin: 10px 0;
     padding: 8px;
     display: block;
 }
+
 select {
     width: 265px;
 }
@@ -257,7 +258,7 @@ select {
 
 /* Menu Boxes */
 .menu {
-    width: 20%;
+    width: 19%;
 }
 
 .box {
@@ -313,12 +314,10 @@ select {
 }
 
 .ad span {
-    width: 80%;
-    float: right;
     padding: 10px;
-    margin: 5px;
+    margin-bottom: 10px;
     background-color: #c5e0b4;
-    display: inline-block;
+    display: block;
     border: 1px solid #649b3f;
 }
 
@@ -333,13 +332,12 @@ select {
 }
 
 .ad-info {
-    width: 75%;
+    width: 70%;
     float: right;
 }
 
 /* Form Box */
 .form {
-    min-width: 35%;
     display: inline-block;
     border-radius: 10px;
 }
@@ -361,9 +359,18 @@ select {
 }
 
 /* Login / Register Box */
-.form div {
+.form > div {
+    width: 40%;
     margin-right: 15px;
     display: inline-block;
+}
+
+.form div.pull-right {
+    width: 30%;
+}
+
+.form div.pull-left {
+    width: 70%;
 }
 
 .form .buttons {
@@ -373,16 +380,12 @@ select {
 
 /* User Ads Box */
 .user-ads {
-    width: 130%;
-}
-
-.user-ads figure {
-    float: left;
+    width: 135%;
 }
 
 .user-ads .ad-info {
-    width: 60%;
-    padding-left: 20px;
+    width: 55%;
+    padding-left: 10px;
     float: none;
     display: inline-block;
 }
