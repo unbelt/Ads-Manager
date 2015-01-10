@@ -126,13 +126,33 @@ body {
     margin: 0 0 100px;
 }
 
-h1 { font-size: 1.6em;}
-h2 {font-size: 1.4em;}
-h3 {font-size: 1.2em;}
-h4 {font-size: 1em;}
-h5 {font-size: 0.8em;}
-h6 {font-size: 0.6em;}
-a {text-decoration: none;}
+h1 {
+    font-size: 1.6em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h5 {
+    font-size: 0.8em;
+}
+
+h6 {
+    font-size: 0.6em;
+}
+
+a {
+    text-decoration: none;
+}
 
 img {
     width: 100%;
@@ -140,25 +160,33 @@ img {
 }
 
 input, select, textarea {
-    width: 95%;
+    font-size: 1em;
+    max-width: 95%;
     margin: 10px 0;
     padding: 8px;
     display: block;
+}
+select {
+    width: 265px;
 }
 
 /* Common Assets */
 .pull-left {
     float: left;
 }
+
 .pull-right {
     float: right;
 }
+
 .show {
     display: block !important;
 }
+
 .hide {
     display: none !important;
 }
+
 .loading {
     pointer-events: none;
     opacity: 0.5;
@@ -180,6 +208,7 @@ input, select, textarea {
     background-color: #daa600;
     border: 1px solid #7f6000;
 }
+
 .button, a.button {
     width: auto;
     color: #ffffff;
@@ -230,7 +259,10 @@ input, select, textarea {
 .menu {
     width: 20%;
 }
+
 .box {
+    min-width: 70%;
+    display: inline-block;
     margin: 20px;
     padding: 30px;
     border: 1px solid #507e32;
@@ -246,10 +278,6 @@ input, select, textarea {
 .box > nav > ul li a:hover, .button:hover {
     border: 1px solid #7f6000;
     cursor: pointer;
-}
-
-.box.big {
-    width: 200%;
 }
 
 .pagination {
@@ -270,10 +298,11 @@ input, select, textarea {
 }
 
 /* Advertising Box */
-.ad {
+.ad, .ad-info > div {
     min-width: 100%;
     display: inline-block;
 }
+
 .ad header time {
     float: right;
     font-style: italic;
@@ -284,7 +313,7 @@ input, select, textarea {
 }
 
 .ad span {
-    width: 85%;
+    width: 80%;
     float: right;
     padding: 10px;
     margin: 5px;
@@ -308,13 +337,10 @@ input, select, textarea {
     float: right;
 }
 
-.ad-info > div {
-    display: inline-block;
-    width: 100%;
-}
-
 /* Form Box */
 .form {
+    min-width: 35%;
+    display: inline-block;
     border-radius: 10px;
 }
 
@@ -322,6 +348,7 @@ input, select, textarea {
     display: inline-block;
     color: #ffffff;
 }
+
 .form input[type=file] {
     width: 120px;
     display: block;
@@ -335,7 +362,6 @@ input, select, textarea {
 
 /* Login / Register Box */
 .form div {
-    width: 47%;
     margin-right: 15px;
     display: inline-block;
 }
@@ -343,14 +369,6 @@ input, select, textarea {
 .form .buttons {
     display: block;
     clear: both;
-}
-
-/* Edit Form */
-.edit, .edit form {
-    display: inline-block;
-}
-.edit form div {
-    width: auto;
 }
 
 /* User Ads Box */
@@ -368,6 +386,7 @@ input, select, textarea {
     float: none;
     display: inline-block;
 }
+
 .user-ads .status {
     text-align: center;
     padding-left: 20px;
@@ -378,11 +397,4 @@ input, select, textarea {
 
 .user-ads .button {
     width: 140px;
-}
-
-/* Profile Box */
-.profile {
-    margin: 30px;
-    display: inline-block;
-    width: 35%;
 }

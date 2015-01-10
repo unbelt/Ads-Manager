@@ -8,6 +8,11 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
             //api: 'http://localhost:1337/api/'
             api: 'http://softuni-ads.azurewebsites.net/api/'
         },
+        catalog: {
+            dateFormat: 'd-MMM-yyyy',
+            startPage: 1,
+            pageSize: 5
+        },
         author: {
             name: 'Flyer',
             website: 'http://webgrounder.com/',

@@ -1,4 +1,4 @@
-<section class="box profile form">
+<section class="box form">
     <header>
         <h2>Edit Profile</h2>
     </header>
@@ -19,11 +19,11 @@
         </select>
 
         <input type="submit" class="button" value="Update" ng-click="editAccount(user)"/>
-        <a href="#/home" class="button">Cancel</a>
+        <a ng-href="#/home" class="button">Cancel</a>
     </form>
 </section>
 
-<section class="box profile form">
+<section class="box form">
     <header>
         <h2>Change Password</h2>
     </header>
@@ -39,6 +39,6 @@
         <input type="password" id="password-rep" placeholder="Password" ng-model="user.confirmPassword"/>
 
         <input type="submit" class="button" value="Change" ng-click="changePassword(user)"/>
-        <a href="#/home" class="button">Cancel</a>
+        <a ng-href="#/home" class="button">Cancel</a>
     </form>
 </section>

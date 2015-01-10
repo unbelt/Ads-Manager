@@ -4,8 +4,10 @@
     </header>
 
     <form name="registerForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Username" required="required" ng-model="user.username"/>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Username" required="required" ng-model="user.username"/>
+        </div>
 
         <div>
             <label for="password">Password:</label>
@@ -34,7 +36,9 @@
                 <option value="" ng-repeat="town in towns">{{ town.name }}</option>
             </select>
         </div>
-        <input type="submit" class="button" value="Register" ng-click="register(user, registerForm)"/>
-        <a href="#/login"><abbr title="Login">Login here</abbr></a>
+        <div class="buttons">
+            <input type="submit" class="button" value="Register" ng-click="register(user, registerForm)"/>
+            <a ng-href="#/login"><abbr title="Login">Login here</abbr></a>
+        </div>
     </form>
 </section>

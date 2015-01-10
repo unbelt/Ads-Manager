@@ -1,15 +1,16 @@
 'use strict';
 
 angular.module('adsApp')
-    .controller('CatalogController', ['$scope', '$rootScope', '$location', 'catalog', 'notify',
-        function ($scope, $rootScope, $location, catalog, notify) {
+    .controller('CatalogController', ['$scope', '$rootScope', '$location', 'catalog', 'config', 'notify',
+        function ($scope, $rootScope, $location, catalog, config, notify) {
 
             $rootScope.pageTitle = 'My Ads';
 
+
             var adsParams = {
                 'status': '',
-                'startPage': 1,
-                'pageSize': 2
+                'startPage': config.catalog.startPage,
+                'pageSize': config.catalog.pageSize
             };
             var adsStatus = {
                 activate: 'PublishAgain',
@@ -17,6 +18,7 @@ angular.module('adsApp')
             };
             $scope.adsParams = adsParams;
             $scope.adsStatus = adsStatus;
+            $scope.dateFormat = config.catalog.dateFormat;
 
             $scope.getUserCatalog = function () {
                 $rootScope.loading = true;

@@ -1,4 +1,4 @@
-<section class="box edit form">
+<section class="box form">
     <header>
         <h2>Publish New Ad</h2>
     </header>
@@ -20,12 +20,11 @@
             </textarea>
 
             <div ng-include="'../app/views/partials/selectOptions.html'"></div>
-
         </div>
 
         <div class="buttons">
             <input type="button" class="button" value="Publish" ng-click="createAd(ad)"/>
-            <a href="#/user/ads" class="button pull-right">Cancel</a>
+            <a ng-href="#/user/ads" class="button pull-right">Cancel</a>
         </div>
     </form>
 </section>

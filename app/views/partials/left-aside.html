@@ -4,8 +4,8 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#/login" class="button">Login</a></li>
-            <li><a href="#/register" class="button">Register</a></li>
+            <li><a ng-href="#/login" class="button">Login</a></li>
+            <li><a ng-href="#/register" class="button">Register</a></li>
         </ul>
     </nav>
 </section>
@@ -17,15 +17,15 @@
     <nav>
         <ul>
             <li>
-                <a href="#/home" ng-class="{active: pageTitle == 'Home'}">Home</a>
+                <a ng-href="#/home" ng-class="{active: pageTitle == 'Home'}">Home</a>
             </li>
             <li ng-show="account.isAuthenticated()">
-                <a href="#/user/ads" ng-class="{active: pageTitle == 'My Ads'}">My Ads</a></li>
+                <a ng-href="#/user/ads" ng-class="{active: pageTitle == 'My Ads'}">My Ads</a></li>
             <li ng-show="account.isAuthenticated()">
-                <a href="#/user/ads/publish" ng-class="{active: pageTitle == 'Publish New Ad'}">Publish New Ad</a>
+                <a ng-href="#/user/ads/publish" ng-class="{active: pageTitle == 'Publish New Ad'}">Publish New Ad</a>
             </li>
             <li ng-show="account.isAuthenticated()">
-                <a href="#/user/profile" ng-class="{active: pageTitle == 'Edit User Profile'}">Edit Profile</a>
+                <a ng-href="#/user/profile" ng-class="{active: pageTitle == 'Edit User Profile'}">Edit Profile</a>
             </li>
         </ul>
     </nav>

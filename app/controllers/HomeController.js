@@ -1,18 +1,19 @@
 'use strict';
 
-angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog', 'notify',
-    function ($scope, $rootScope, catalog, notify) {
+angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog', 'config', 'notify',
+    function ($scope, $rootScope, catalog, config, notify) {
 
         $rootScope.pageTitle = 'Home';
 
         var adsParams = {
-            'startPage': 1,
-            'pageSize': 2,
+            'startPage': config.catalog.startPage,
+            'pageSize': config.catalog.pageSize,
             'categoryId': '',
             'townId': ''
         };
 
         $scope.adsParams = adsParams;
+        $scope.dateFormat = config.catalog.dateFormat;
 
         $scope.getCatalog = function () {
             $rootScope.loading = true;

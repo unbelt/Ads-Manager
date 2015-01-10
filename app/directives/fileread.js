@@ -5,7 +5,7 @@ angular.module('adsApp').directive('fileread', [function () {
         scope: {
             fileread: '='
         },
-        link: function (scope, element, attributes) {
+        link: function (scope, element) {
             element.bind('change', function (changeEvent) {
                 var reader = new FileReader();
 
