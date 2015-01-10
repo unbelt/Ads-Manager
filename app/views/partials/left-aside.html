@@ -10,14 +10,35 @@
     </nav>
 </section>
 
-<section class="box">
+<section class="box" ng-show="account.isAdmin()">
+    <header>
+        <h2>Admin Navigation</h2>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a ng-href="#/admin" ng-class="{active: pageTitle == 'Ads'}">Ads</a>
+            </li>
+            <li>
+                <a ng-href="#/admin/users/list" ng-class="{active: pageTitle == 'Users'}">Users</a></li>
+            <li>
+                <a ng-href="#/admin/categories/list" ng-class="{active: pageTitle == 'Categories'}">Categories</a>
+            </li>
+            <li>
+                <a ng-href="#/admin/towns/list" ng-class="{active: pageTitle == 'Towns'}">Towns</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+<section class="box" ng-hide="account.isAdmin()">
     <header>
         <h2>Navigation</h2>
     </header>
     <nav>
         <ul>
             <li>
-                <a ng-href="#/home" ng-class="{active: pageTitle == 'Home'}">Home</a>
+                <a ng-href="#/" ng-class="{active: pageTitle == 'Home'}">Home</a>
             </li>
             <li ng-show="account.isAuthenticated()">
                 <a ng-href="#/user/ads" ng-class="{active: pageTitle == 'My Ads'}">My Ads</a></li>
@@ -31,9 +52,10 @@
     </nav>
 </section>
 
-<section class="box" ng-show="account.isAuthenticated() && pageTitle == 'My Ads'">
+<section class="box" ng-show="(account.isAuthenticated() && pageTitle == 'My Ads') ||
+                               account.isAdmin() && pageTitle == 'Ads'">
     <header>
-        <h2>My Ads</h2>
+        <h2>Status</h2>
     </header>
     <nav>
         <ul>

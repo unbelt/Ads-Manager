@@ -1,0 +1,34 @@
+<section ng-repeat="ad in catalog.ads" class="box user-ads">
+    <article class="ad">
+        <header>
+            <time datetime="{{ ad.date | date : dateFormat }}">{{ ad.date | date : dateFormat }}</time>
+            <h2>{{ ad.title }}</h2>
+        </header>
+
+        <figure class="pull-left">
+            <img ng-src="{{ ad.imageDataUrl }}" alt="No Image" />
+        </figure>
+
+        <div class="ad-info">
+            <span>{{ ad.text }}</span>
+
+            <div>Category: <span>{{ ad.categoryName }}</span></div>
+            <div>Town: <span>{{ ad.townName }}</span></div>
+        </div>
+
+        <section class="status">
+            <p>Status:</p>
+            <span>{{ ad.status }}</span>
+            <a href="" class="button" ng-click="changeAdStatus(ad.id, adsStatus.deactivate)"
+               ng-hide="ad.status == 'Inactive'">Deactivate</a>
+
+            <div ng-show="ad.status == 'Inactive'">
+                <a ng-href="#/user/ads/edit/{{ ad.id }}" class="button">Edit</a>
+                <a href="" class="button" ng-click="changeAdStatus(ad.id, adsStatus.activate)">Publish Again</a>
+                <a ng-href="#/user/ads/delete/{{ ad.id }}" class="button">Delete</a>
+            </div>
+        </section>
+    </article>
+</section>
+
+<nav class="pagination" ng-include="'../app/views/partials/pagination.html'"></nav>

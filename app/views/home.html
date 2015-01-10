@@ -3,16 +3,27 @@
         <time datetime="{{ ad.date | date : dateFormat }}">{{ ad.date | date : dateFormat }}</time>
         <h2>{{ ad.title }}</h2>
     </header>
-    <figure>
-        <img ng-src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
+
+    <figure class="pull-left">
+        <img ng-src="{{ ad.imageDataUrl }}" alt="No Image"/>
     </figure>
 
     <div class="ad-info">
         <span>{{ ad.text }}</span>
 
         <div>Name: <span>{{ ad.ownerName }}</span></div>
-        <div>Email: <span>{{ ad.ownerEmail }}</span></div>
+        <div>Email: <span><a ng-href="mailto:{{ ad.ownerEmail }}">{{ ad.ownerEmail }}</a></span></div>
         <div>Tel. <span>{{ ad.ownerPhone }}</span></div>
+
+        <div ng-show="account.isAdmin()">
+            <div>Username: <span>{{ ad.ownerUsername }}</span></div>
+            <div>Category: <span>{{ ad.categoryName }}</span></div>
+            <div>Town: <span>{{ ad.townName }}</span></div>
+
+            <hr/>
+
+            <div ng-include="'../app/views/partials/adminStatusButtons.html'"></div>
+        </div>
     </div>
 </section>
 

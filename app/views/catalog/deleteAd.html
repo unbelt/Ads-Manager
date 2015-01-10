@@ -1,0 +1,36 @@
+<section class="ad box">
+    <header>
+        <h2>Confirm Deleting Ad?</h2>
+    </header>
+
+    <section>
+        <header>
+            <time datetime="{{ ad.date | date : 'd-MMM-yyyy' }}">{{ ad.date | date : 'd-MMM-yyyy' }}</time>
+            <h3>{{ ad.title }}</h3>
+        </header>
+        <figure>
+            <img ng-src="{{ ad.imageDataUrl }}" alt="No Image" class="pull-left"/>
+        </figure>
+
+        <div class="ad-info">
+            <span>{{ ad.text }}</span>
+
+            <div>Category: <span>{{ ad.categoryName }}</span></div>
+            <div>Town: <span>{{ ad.townName }}</span></div>
+
+            <div ng-show="account.isAdmin()">
+                <div>Username: <span>{{ ad.ownerUsername }}</span></div>
+                <div>Name: <span>{{ ad.ownerName }}</span></div>
+                <div>Email: <span>{{ ad.ownerEmail }}</span></div>
+                <div>Tel. <span>{{ ad.ownerPhone }}</span></div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="buttons">
+        <input type="button" class="button" value="Delete" ng-click="deleteAd(ad.id)"/>
+        <a ng-href="{{ account.isAdmin() ? '#/admin' : '#/user/ads' }}" class="button pull-right">Cancel</a>
+    </div>
+</section>
+

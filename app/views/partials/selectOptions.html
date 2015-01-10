@@ -19,3 +19,24 @@
         </option>
     </select>
 </fieldset>
+
+<fieldset ng-show="account.isAdmin()">
+    <label for="date">Data:</label>
+    <input type="date" id="date" value=""/>
+
+    <label for="status">Status:</label>
+    <select id="status" ng-model="ad.status">
+        <option value="Published" ng-selected="ad.status == 'Published'">
+            Published
+        </option>
+        <option value="WaitingApproval" ng-selected="ad.status == 'WaitingApproval'">
+            Waiting Approval
+        </option>
+        <option value="Rejected" ng-selected="ad.status == 'Rejected'">
+            Rejected
+        </option>
+        <option value="Inactive" ng-selected="ad.status == 'Inactive'">
+            Inactive
+        </option>
+    </select>
+</fieldset>

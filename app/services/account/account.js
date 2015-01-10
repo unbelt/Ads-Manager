@@ -34,6 +34,11 @@ angular.module('adsApp')
                 },
                 isAuthenticated: function () {
                     return !!cookieStorage.getCurrentUser();
+                },
+                isAdmin: function () {
+                    if(cookieStorage.getCurrentUser()) {
+                        return cookieStorage.getCurrentUser().isAdmin;
+                    }
                 }
             }
         }

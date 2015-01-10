@@ -25,10 +25,11 @@
     <section class="container" ng-class="{'loading': loading}" ng-view></section>
 
     <aside class="menu pull-right"
-           ng-controller="SidebarController"
            ng-class="{'loading': loading}"
            ng-include="'../app/views/partials/right-aside.html'"
-           ng-show="pageTitle == 'Home'">
+           ng-controller="SidebarController"
+           ng-show="pageTitle == 'Home'  ||
+           (account.isAdmin() && pageTitle != 'My Ads')">
     </aside>
 </main>
 
@@ -51,7 +52,7 @@
 <!-- Services -->
 <script src="../app/services/notify.js"></script>
 <script src="../app/services/resource.js"></script>
-<script src="../app/services/catalog/catalog.js"></script>
+<script src="../app/services/catalog.js"></script>
 <script src="../app/services/account/account.js"></script>
 <script src="../app/services/account/authorization.js"></script>
 <script src="../app/services/account/cookieStorage.js"></script>
@@ -63,27 +64,34 @@
 
 <!--------------------------------- USER AREA -->
 <!-- User Account controllers -->
-<script src="../app/controllers/user/account/LoginController.js"></script>
-<script src="../app/controllers/user/account/RegisterController.js"></script>
-<script src="../app/controllers/user/account/EditAccountController.js"></script>
+<script src="../app/controllers/account/LoginController.js"></script>
+<script src="../app/controllers/account/RegisterController.js"></script>
+<script src="../app/controllers/account/EditAccountController.js"></script>
 
 <!-- User Catalog controllers -->
-<script src="../app/controllers/user/catalog/CatalogController.js"></script>
-<script src="../app/controllers/user/catalog/CreateAdController.js"></script>
-<script src="../app/controllers/user/catalog/EditAdController.js"></script>
-<script src="../app/controllers/user/catalog/DeleteAdController.js"></script>
+<script src="../app/controllers/catalog/CreateAdController.js"></script>
+<script src="../app/controllers/catalog/EditAdController.js"></script>
+<script src="../app/controllers/catalog/DeleteAdController.js"></script>
 
 
 <!-------------------------------- ADMIN AREA -->
 
-<!-- Admin Services -->
-<script src="../app/services/catalog/adminCatalog.js"></script>
+<!-- Admin Users controllers -->
+<script src="../app/controllers/admin/users/AdminUsersController.js"></script>
+<script src="../app/controllers/admin/users/AdminEditUserController.js"></script>
+<script src="../app/controllers/admin/users/AdminDeleteUserController.js"></script>
 
-<!-- Admin Catalog controllers -->
-<script src="../app/controllers/admin/catalog/AdminCatalogController.js"></script>
+<!-- Admin Categories controllers -->
+<script src="../app/controllers/admin/categories/AdminCategoriesController.js"></script>
+<script src="../app/controllers/admin/categories/AdminCreateCategoryController.js"></script>
+<script src="../app/controllers/admin/categories/AdminDeleteCategoryController.js"></script>
+<script src="../app/controllers/admin/categories/AdminEditCategoryController.js"></script>
 
-
-
+<!-- Admin Towns controllers -->
+<script src="../app/controllers/admin/towns/AdminTownsController.js"></script>
+<script src="../app/controllers/admin/towns/AdminCreateTownController.js"></script>
+<script src="../app/controllers/admin/towns/AdminDeleteTownController.js"></script>
+<script src="../app/controllers/admin/towns/AdminEditTownController.js"></script>
 
 </body>
 </html>

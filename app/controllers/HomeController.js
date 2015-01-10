@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', 'catalog', 'config', 'notify',
-    function ($scope, $rootScope, catalog, config, notify) {
+angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '$location', 'catalog', 'account', 'config', 'notify',
+    function ($scope, $rootScope, $location, catalog, account, config, notify) {
 
         $rootScope.pageTitle = 'Home';
 
@@ -11,14 +11,31 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
             'categoryId': '',
             'townId': ''
         };
+        var adsStatus = {
+            activate: 'PublishAgain',
+            deactivate: 'Deactivate'
+        };
+
+        var user = '';
+
+        if (account.isAdmin()) {
+            $rootScope.pageTitle = 'Ads';
+            adsParams.status = '';
+            adsParams.sotrBy = 'Title';
+            user = 'admin/';
+        } else if ($location.path() == '/user/ads') {
+            $rootScope.pageTitle = 'My Ads';
+            user = 'user/';
+        }
 
         $scope.adsParams = adsParams;
+        $scope.adsStatus = adsStatus;
         $scope.dateFormat = config.catalog.dateFormat;
 
         $scope.getCatalog = function () {
             $rootScope.loading = true;
 
-            catalog.getCatalog(adsParams).then(function (catalog) {
+            catalog.getCatalog(adsParams, user).then(function (catalog) {
                 $scope.catalog = catalog;
                 $scope.pages = new Array(catalog.numPages);
             }, function (error) {
@@ -41,6 +58,16 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
             $scope.getCatalog();
         };
 
+        $scope.changeAdStatus = function (id, status) {
+            catalog.changeAdStatus(status + '/' + id).then(function () {
+                $scope.getCatalog();
+                notify.message('Your advertisement is now ' + status);
+            }, function (error) {
+                notify.message('Changing advertisement status failed!', error);
+            });
+        };
+
+        // Ads filtering
         $scope.$on('categoryChanged', function (event, selectedCategory) {
             adsParams.categoryId = selectedCategory;
             adsParams.startPage = 1;
@@ -49,6 +76,12 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
 
         $scope.$on('townChanged', function (event, selectedTown) {
             adsParams.townId = selectedTown;
+            adsParams.startPage = 1;
+            $scope.getCatalog();
+        });
+
+        $scope.$on('statusChanged', function (event, selectedStatus) {
+            adsParams.status = selectedStatus;
             adsParams.startPage = 1;
             $scope.getCatalog();
         });

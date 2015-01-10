@@ -11,7 +11,7 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         catalog: {
             dateFormat: 'd-MMM-yyyy',
             startPage: 1,
-            pageSize: 5
+            pageSize: 2
         },
         author: {
             name: 'Flyer',
@@ -20,48 +20,109 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         }
     })
     .config(function ($routeProvider) {
+        // ********************************* User Area
         $routeProvider
-            .when('/home', {
+            .when('/', {
                 templateUrl: 'app/views/home.html',
                 controller: 'HomeController',
                 guestAccess: true
             })
             .when('/login', {
-                templateUrl: 'app/views/user/account/login.html',
+                templateUrl: 'app/views/account/login.html',
                 controller: 'LoginController',
                 allowGuest: true
             })
             .when('/register', {
-                templateUrl: 'app/views/user/account/register.html',
+                templateUrl: 'app/views/account/register.html',
                 controller: 'RegisterController',
                 allowGuest: true
             })
             .when('/user/profile', {
-                templateUrl: 'app/views/user/account/editAccount.html',
+                templateUrl: 'app/views/account/editAccount.html',
                 controller: 'EditAccountController'
             })
             .when('/user/ads', {
-                templateUrl: 'app/views/user/catalog/showCatalog.html',
-                controller: 'CatalogController'
+                templateUrl: 'app/views/catalog/showCatalog.html',
+                controller: 'HomeController'
             })
             .when('/user/ads/publish', {
-                templateUrl: 'app/views/user/catalog/createAd.html',
+                templateUrl: 'app/views/catalog/createAd.html',
                 controller: 'CreateAdController'
             })
-            .when('/user/ads/edit', {
-                templateUrl: 'app/views/user/catalog/editAd.html',
+            .when('/user/ads/edit/:id', {
+                templateUrl: 'app/views/catalog/editAd.html',
                 controller: 'EditAdController'
             })
-            .when('/user/ads/delete', {
-                templateUrl: 'app/views/user/catalog/deleteAd.html',
+            .when('/user/ads/delete/:id', {
+                templateUrl: 'app/views/catalog/deleteAd.html',
                 controller: 'DeleteAdController'
             })
-            .otherwise({redirectTo: '/home'});
-        // *************************************************** Admin Area
+            .otherwise({redirectTo: '/'});
+
+        // ********************************* Admin Area
         $routeProvider
-            .when('/admin/home', {
-                templateUrl: 'app/views/admin/catalog/showCatalog.html',
-                controller: 'AdminCatalogController'
+            // ************* Catalog
+            .when('/admin', {
+                templateUrl: 'app/views/home.html',
+                controller: 'HomeController'
+            })
+            .when('/admin/ads/edit/:id', {
+                templateUrl: 'app/views/catalog/editAd.html',
+                controller: 'EditAdController'
+            })
+            .when('/admin/ads/delete/:id', {
+                templateUrl: 'app/views/catalog/deleteAd.html',
+                controller: 'DeleteAdController'
+            })
+
+            // ************* Users
+            .when('/admin/users/list', {
+                templateUrl: 'app/views/admin/users/showUsers.html',
+                controller: 'AdminUsersController'
+            })
+            .when('/admin/users/edit/:id', {
+                templateUrl: 'app/views/admin/users/editUser.html',
+                controller: 'AdminEditUserController'
+            })
+            .when('/admin/users/delete/:id', {
+                templateUrl: 'app/views/admin/users/deleteUser.html',
+                controller: 'AdminDeleteUserController'
+            })
+
+            // ************* Categories
+            .when('/admin/categories/list', {
+                templateUrl: 'app/views/admin/categories/showCategories.html',
+                controller: 'AdminCategoriesController'
+            })
+            .when('/admin/categories/create', {
+                templateUrl: 'app/views/admin/categories/createCategory.html',
+                controller: 'AdminCreateCategoryController'
+            })
+            .when('/admin/categories/edit/:id', {
+                templateUrl: 'app/views/admin/categories/editCategory.html',
+                controller: 'AdminEditCategoryController'
+            })
+            .when('/admin/categories/delete/:id', {
+                templateUrl: 'app/views/admin/categories/deleteCategory.html',
+                controller: 'AdminDeleteCategoryController'
+            })
+
+            // ************* Towns
+            .when('/admin/towns/list', {
+                templateUrl: 'app/views/admin/towns/showTowns.html',
+                controller: 'AdminTownsController'
+            })
+            .when('/admin/towns/create', {
+                templateUrl: 'app/views/admin/towns/createTown.html',
+                controller: 'AdminCreateTownController'
+            })
+            .when('/admin/towns/edit/:id', {
+                templateUrl: 'app/views/admin/towns/editTown.html',
+                controller: 'AdminTownCategoryController'
+            })
+            .when('/admin/towns/delete/:id', {
+                templateUrl: 'app/views/admin/towns/deleteTown.html',
+                controller: 'AdminDeleteTownController'
             });
     }
 );

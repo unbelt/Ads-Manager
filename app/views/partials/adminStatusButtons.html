@@ -1,0 +1,19 @@
+<section class="status">
+    <div>
+        <p>Status:</p>
+        <span>{{ ad.status }}</span>
+
+        <a href="" class="button"
+           ng-click="changeAdStatus(ad.id, 'Approve')"
+           ng-hide="ad.status == 'Published'">Approve
+        </a>
+
+        <a href="" class="button"
+           ng-click="changeAdStatus(ad.id, 'Reject')"
+           ng-hide="ad.status == 'Inactive' || ad.status == 'Rejected'">Reject
+        </a>
+
+        <a href="#/admin/ads/edit/{{ ad.id }}" class="button">Edit</a>
+        <a href="#/admin/ads/delete/{{ ad.id }}" class="button">Delete</a>
+    </div>
+</section>
