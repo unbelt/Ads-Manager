@@ -171,6 +171,33 @@ select {
     width: 265px;
 }
 
+table {
+    width: 70%;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 20px;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+table td, table th {
+    padding: 10px;
+    border: 1px solid #507e32;
+    box-shadow: 3px 3px 5px #abb6a4;
+}
+
+table tr:nth-child(odd) {
+    background-color: #a9d18e;
+}
+
+table tr:nth-child(even) {
+    background-color: #c5e0b4;
+}
+
+table a {
+    border-bottom: 1px dotted blue;
+}
+
 /* Common Assets */
 .pull-left {
     float: left;

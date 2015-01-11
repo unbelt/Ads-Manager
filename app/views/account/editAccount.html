@@ -18,6 +18,11 @@
             <option ng-repeat="town in towns" value="{{ town.id }}" ng-selected="town.id == user.townId">{{ town.name }}</option>
         </select>
 
+        <div ng-show="account.isAdmin()">
+            <label for="is-admin">Is Administrator?</label>
+            <input type="checkbox" id="is-admin" ng-model="user.isAdmin"/>
+        </div>
+
         <input type="submit" class="button" value="Update" ng-click="editAccount(user)"/>
         <a ng-href="#/" class="button">Cancel</a>
     </form>

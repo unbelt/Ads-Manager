@@ -34,6 +34,9 @@ angular.module('adsApp')
                 editUserPassword: function (password) {
                     return resource.use(changePassword).put(password).$promise;
                 },
+                deleteUserProfile: function (userId) {
+                    console.log(userId);
+                },
                 getCurrentUser: function () {
                     return cookieStorage.getCurrentUser();
                 },

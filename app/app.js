@@ -16,15 +16,15 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         users: {
             sortBy: 'UserName',
             startPage: 1,
-            pageSize: 10
+            pageSize: 20
         },
         categories: {
             startPage: 1,
-            pageSize: 10
+            pageSize: 20
         },
         towns: {
             startPage: 1,
-            pageSize: 10
+            pageSize: 20
         },
         author: {
             name: 'Flyer',
@@ -94,8 +94,8 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
                 controller: 'AdminUsersController'
             })
             .when('/admin/users/edit/:id', {
-                templateUrl: 'app/views/admin/users/editUser.html',
-                controller: 'AdminEditUserController'
+                templateUrl: 'app/views/account/editAccount.html',
+                controller: 'EditAccountController'
             })
             .when('/admin/users/delete/:id', {
                 templateUrl: 'app/views/admin/users/deleteUser.html',

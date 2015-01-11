@@ -1,1 +1,10 @@
-<h1>Delete Category</h1>
+<div class="ad box form">
+    <form>
+        <div>
+            Category: <span>{{ category.username }}</span>
+        </div>
+
+        <input type="button" value="Delete" class="button" ng-click="deleteCategory()"/>
+        <a href="#/admin/categories/list" class="button">Cancel</a>
+    </form>
+</div>

@@ -1,1 +1,9 @@
-<h1>Edit Town</h1>
+<div class="box form pull-right">
+    <form>
+        <label for="town">Town:</label>
+        <input type="text" value="{{ town.username }}" id="town" ng-model="town.username"/>
+
+        <input type="button" value="Create" class="button" ng-click="editTown(town)"/>
+        <a href="#/admin/towns/list" class="button">Cancel</a>
+    </form>
+</div>

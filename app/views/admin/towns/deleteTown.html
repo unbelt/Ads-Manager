@@ -1,1 +1,10 @@
-<h1>Delete Town</h1>
+<div class="ad box form">
+    <form>
+        <div>
+            Town: <span>{{ town.username }}</span>
+        </div>
+
+        <input type="button" value="Delete" class="button" ng-click="deleteTown()"/>
+        <a href="#/admin/towns/list" class="button">Cancel</a>
+    </form>
+</div>

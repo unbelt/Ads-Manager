@@ -15,7 +15,7 @@ angular.module('adsApp')
             catalog.getAll('towns').then(function (towns) {
                 $scope.towns = towns;
             }, function (error) {
-                console.log('Loading towns failed!', error);
+                notify.message('Loading towns failed!', error);
             });
 
             $scope.editAccount = function (user) {

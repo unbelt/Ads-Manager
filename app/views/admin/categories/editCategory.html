@@ -1,1 +1,9 @@
-<h1>Edit Category</h1>
+<div class="ad box form">
+    <form>
+        <label for="town">Category:</label>
+        <input type="text" id="town" value="{{ category.username }}" ng-model="category.username"/>
+
+        <input type="button" value="Create" class="button" ng-click="createCategory(category)"/>
+        <a href="#/admin/categories/list" class="button">Cancel</a>
+    </form>
+</div>

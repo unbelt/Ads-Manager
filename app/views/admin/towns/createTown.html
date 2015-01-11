@@ -1,1 +1,9 @@
-<h1>Create Town</h1>
+<div class="ad box form">
+    <form>
+        <label for="town">Town:</label>
+        <input type="text" id="town" placeholder="Town name" ng-model="town.username"/>
+
+        <input type="button" value="Create" class="button" ng-click="createTown(town)"/>
+        <a href="#/admin/towns/list" class="button">Cancel</a>
+    </form>
+</div>
