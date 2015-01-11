@@ -5,8 +5,8 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
         app: {
             name: 'Ads',
             title: 'Ads Manager',
-            //api: 'http://localhost:1337/api/'
-            api: 'http://softuni-ads.azurewebsites.net/api/'
+            api: 'http://localhost:1337/api/'
+            //api: 'http://softuni-ads.azurewebsites.net/api/'
         },
         catalog: {
             dateFormat: 'd-MMM-yyyy',

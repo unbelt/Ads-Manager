@@ -21,10 +21,9 @@ angular.module('adsApp')
                 edit: function (id) {
                     console.log(id);
                 },
-                remove: function (id) {
-                    console.log(id);
+                deleteUser: function (api, id) {
+                    return resource.use(api).delete(id).$promise;
                 },
-
                 getAll: function (type) {
                     return resource.use(type).query().$promise;
                 },
