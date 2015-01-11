@@ -15,7 +15,6 @@ angular.module('adsApp').controller('AdminCategoriesController', ['$scope', '$ro
             $rootScope.loading = true;
             catalog.get('admin/categories', categoriesParams).then(function (categories) {
                 $scope.categories = categories;
-                $scope.pages = new Array(categories.numPages);
             }, function (error) {
                 notify.message('Users filed to load!', error);
             }).finally(function () {

@@ -1,9 +1,11 @@
+{{ category }}
+
 <div class="ad box form">
     <form>
         <label for="town">Category:</label>
         <input type="text" id="town" value="{{ category.username }}" ng-model="category.username"/>
 
-        <input type="button" value="Create" class="button" ng-click="createCategory(category)"/>
+        <input type="button" value="Edit" class="button" ng-click="editCategory(category)"/>
         <a href="#/admin/categories/list" class="button">Cancel</a>
     </form>
 </div>

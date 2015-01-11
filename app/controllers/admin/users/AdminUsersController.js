@@ -16,7 +16,6 @@ angular.module('adsApp').controller('AdminUsersController', ['$scope', '$rootSco
             $rootScope.loading = true;
             account.get('admin/users', usersParams).then(function (users) {
                 $scope.users = users;
-                //$scope.pages = new Array(users.numPages);
             }, function (error) {
                 notify.message('Users filed to load!', error);
             }).finally(function () {

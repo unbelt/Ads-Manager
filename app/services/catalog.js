@@ -15,6 +15,16 @@ angular.module('adsApp')
                 get: function (api, params) {
                     return resource.use(api).get(params).$promise;
                 },
+                create: function (obj) {
+                    console.log(obj);
+                },
+                edit: function (id) {
+                    console.log(id);
+                },
+                remove: function (id) {
+                    console.log(id);
+                },
+
                 getAll: function (type) {
                     return resource.use(type).query().$promise;
                 },

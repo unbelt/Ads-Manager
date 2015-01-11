@@ -9,8 +9,8 @@
     <tr ng-repeat="category in categories.categories">
         <td>{{ category.username }}</td>
         <td>
-            <a href="#/admin/categories/edit/{{ category.id }}">Edit</a>
-            <a href="#/admin/categories/delete/{{ category.id }}">Delete</a>
+            <a ng-href="#/admin/categories/edit/{{ category.id }}">Edit</a>
+            <a ng-href="#/admin/categories/delete/{{ category.id }}">Delete</a>
         </td>
     </tr>
     </tbody>

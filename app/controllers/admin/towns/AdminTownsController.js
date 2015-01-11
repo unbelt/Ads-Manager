@@ -2,6 +2,7 @@
 
 angular.module('adsApp').controller('AdminTownsController', ['$scope', '$rootScope', 'catalog', 'config', 'notify',
     function ($scope, $rootScope, catalog, config, notify) {
+
         $rootScope.pageTitle = 'Towns';
 
         var usersConfig = config.users;
@@ -15,7 +16,6 @@ angular.module('adsApp').controller('AdminTownsController', ['$scope', '$rootSco
             $rootScope.loading = true;
             catalog.get('admin/towns', townsParams).then(function (towns) {
                 $scope.towns = towns;
-                $scope.pages = new Array(towns.numPages);
             }, function (error) {
                 notify.message('Users filed to load!', error);
             }).finally(function () {

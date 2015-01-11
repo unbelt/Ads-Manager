@@ -131,7 +131,7 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
             })
             .when('/admin/towns/edit/:id', {
                 templateUrl: 'app/views/admin/towns/editTown.html',
-                controller: 'AdminTownCategoryController'
+                controller: 'AdminEditTownController'
             })
             .when('/admin/towns/delete/:id', {
                 templateUrl: 'app/views/admin/towns/deleteTown.html',
