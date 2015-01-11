@@ -28,7 +28,7 @@ angular.module('adsApp').controller('EditAdController', ['$scope', '$rootScope',
 
             catalog.editAd(ad).then(function () {
                 $location.path(page);
-                notify.message('Advertisement edited. Don\'t forget to submit it for publishing.');
+                notify.message('Advertisement edited successfully.');
             }, function (error) {
                 notify.message('Advertisements failed to edit!', error);
             }).finally(function () {

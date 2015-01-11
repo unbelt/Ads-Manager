@@ -61,7 +61,7 @@ angular.module('adsApp').controller('HomeController', ['$scope', '$rootScope', '
         $scope.changeAdStatus = function (id, status) {
             catalog.changeAdStatus(status + '/' + id).then(function () {
                 $scope.getCatalog();
-                notify.message('Your advertisement is now ' + status);
+                notify.message('Advertisement is now ' + status);
             }, function (error) {
                 notify.message('Changing advertisement status failed!', error);
             });
