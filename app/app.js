@@ -13,6 +13,19 @@ angular.module('adsApp', ['ngRoute', 'ngCookies', 'ngResource'])
             startPage: 1,
             pageSize: 2
         },
+        users: {
+            sortBy: 'UserName',
+            startPage: 1,
+            pageSize: 10
+        },
+        categories: {
+            startPage: 1,
+            pageSize: 10
+        },
+        towns: {
+            startPage: 1,
+            pageSize: 10
+        },
         author: {
             name: 'Flyer',
             website: 'http://webgrounder.com/',

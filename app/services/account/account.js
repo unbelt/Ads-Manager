@@ -10,7 +10,12 @@ angular.module('adsApp')
                 profile = user + 'profile/',
                 changePassword = user + 'ChangePassword/';
 
+            var users = 'users';
+
             return {
+                get: function (api, params) {
+                    return resource.use(api).get(params).$promise;
+                },
                 register: function (user) {
                     return resource.use(register).post(user).$promise;
                 },
@@ -36,7 +41,7 @@ angular.module('adsApp')
                     return !!cookieStorage.getCurrentUser();
                 },
                 isAdmin: function () {
-                    if(cookieStorage.getCurrentUser()) {
+                    if (cookieStorage.getCurrentUser()) {
                         return cookieStorage.getCurrentUser().isAdmin;
                     }
                 }

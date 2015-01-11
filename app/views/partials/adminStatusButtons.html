@@ -13,7 +13,7 @@
            ng-hide="ad.status == 'Inactive' || ad.status == 'Rejected'">Reject
         </a>
 
-        <a href="#/admin/ads/edit/{{ ad.id }}" class="button">Edit</a>
-        <a href="#/admin/ads/delete/{{ ad.id }}" class="button">Delete</a>
+        <a ng-href="#/admin/ads/edit/{{ ad.id }}" class="button">Edit</a>
+        <a ng-href="#/admin/ads/delete/{{ ad.id }}" class="button">Delete</a>
     </div>
 </section>

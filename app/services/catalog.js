@@ -12,17 +12,14 @@ angular.module('adsApp')
                 towns = api + 'towns/';
 
             return {
+                get: function (api, params) {
+                    return resource.use(api).get(params).$promise;
+                },
                 getAll: function (type) {
                     return resource.use(type).query().$promise;
                 },
-                get: function (type) {
-                    return resource.use(type).get().$promise;
-                },
                 getCatalog: function (adsParams, user) {
                     return resource.use(user + ads).get(adsParams).$promise;
-                },
-                getUserCatalog: function (adsParams) {
-                    return resource.use(userAds).get(adsParams).$promise;
                 },
                 createAd: function (ad) {
                     return resource.use(userAds).post(ad).$promise;

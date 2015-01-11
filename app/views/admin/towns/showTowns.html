@@ -1,1 +1,16 @@
-<h1>Towns</h1>
+<table>
+    <thead>
+    <tr>
+        <td>Town</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="town in towns.towns">
+        <td>{{ town.username }}</td>
+        <td>
+            <a href="#/admin/towns/edit/{{ town.id }}">Edit</a>
+            <a href="#/admin/towns/delete/{{ town.id }}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
